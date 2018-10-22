@@ -1,49 +1,6 @@
-<!DOCTYPE html>
-<html>
-	<head>
-    	<title>Admission Help desk</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="css/fontawesome.min.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
+	@extends('layouts.front')
 
-    	<div class=" container-fluid text-center bg-primary p-0 header">
-        	<h1>Admission Help Desk</h1>
-        	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    				<span class="navbar-toggler-icon"></span>
-	  				</button>
-
-  					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    					<ul class="navbar-nav mr-auto">
-      					<li class="nav-item active">
-        					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      					</li>
-      					<li class="nav-item">
-        					<a class="nav-link" href="#">Result</a>
-      					</li>
-      					<li class="nav-item dropdown">
-        					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Universities</a>
-        					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          						<a class="dropdown-item" href="#">Dhaka University</a>
-          						<a class="dropdown-item" href="#">Jahangirnogor University</a>
-          						<div class="dropdown-divider"></div>
-        					</div>
-      					</li>
-                <li class="nav-item">
-        					<a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">Login</a>
-      					</li>
-    				</ul>
-    				<form class="form-inline my-2 my-lg-0">
-    					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    				</form>
-  				</div>
-				</nav>
-    	</div>
-
+	@section('content')
       <div class="container-fluid p-0">
         	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   				<ol class="carousel-indicators">
@@ -53,13 +10,13 @@
   				</ol>
   				<div class="carousel-inner">
     				<div class="carousel-item active">
-      					<img class="d-block w-100" src="images/1.png" alt="First slide">
+      					<img class="d-block w-100" src="{{ asset('front_end/') }}/images/1.png" alt="First slide">
     				</div>
     				<div class="carousel-item">
-      					<img class="d-block w-100" src="images/2.jpg" alt="Second slide">
+      					<img class="d-block w-100" src="{{ asset('front_end/') }}/images/2.jpg" alt="Second slide">
     				</div>
     				<div class="carousel-item">
-      					<img class="d-block w-100" src="images/3.jpg" alt="Third slide">
+      					<img class="d-block w-100" src="{{ asset('front_end/') }}/images/3.jpg" alt="Third slide">
     				</div>
   				</div>
   				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -117,8 +74,10 @@
   			</div>
 		</div>
 
-        <script src="js/jquery-3.3.1.min.js"></script>
-    	<script src="js/bootstrap.min.js"></script>
-        <script src="js/custom.js"></script>
+		@endsection
+
+        <script src="{{ asset('front_end/') }}/js/jquery-3.3.1.min.js"></script>
+    	<script src="{{ asset('front_end/') }}/js/bootstrap.min.js"></script>
+        <script src="{{ asset('front_end/') }}/js/custom.js"></script>
     </body>
 </html>

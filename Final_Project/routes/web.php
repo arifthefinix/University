@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'frontController@index')->name('front_index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'adminController@index')->name('admindasboard');
+
+Route::get('/student', 'StudentController@index')->name('studentdashboard');
