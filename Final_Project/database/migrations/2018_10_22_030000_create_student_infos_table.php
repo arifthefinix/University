@@ -15,6 +15,7 @@ class CreateStudentInfosTable extends Migration
     {
         Schema::create('student_infos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->comment('Foreign key of User model');
             $table->string('name');
             $table->string('email');
             $table->string('phone')->nullable();
