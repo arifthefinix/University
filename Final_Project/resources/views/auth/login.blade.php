@@ -53,6 +53,9 @@
                             <div class="text-center">
                                 <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                             </div>
+                            <div class="text-center">
+                                <a href="{{ route('password.request') }}"> New user?? Regester Here</a>
+                            </div>
                         </form>
                     </div>
                 </div>
