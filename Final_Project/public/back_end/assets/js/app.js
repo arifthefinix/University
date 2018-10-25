@@ -80,6 +80,7 @@ $(document).ready(function($) {
                 $uniques.modal('hide');
                 $uniques.one('hidden.bs.modal', function(e) {
                     $element.modal('show');
+					$("body").addClass("modal-open");
                 });
                 return false;
             }
@@ -252,6 +253,17 @@ $(document).ready(function($) {
         });
     }
 
+    // Will Delete
+
+    if ($('.themes-icon').length > 0) {
+        $(".themes-icon").click(function() {
+            $('.themes').toggleClass("active");
+            if ($('.main-wrapper').hasClass('open-msg-box')) {
+                $('.main-wrapper').removeClass('open-msg-box');
+            }
+        });
+    }
+
     // Check all email
 
     if ($('.checkbox-all').length > 0) {
@@ -287,27 +299,18 @@ $(document).ready(function($) {
             }
         });
     }
-
-    // Dropdown in Table responsive 
-
-    $('.table-responsive').on('shown.bs.dropdown', function(e) {
-        var $table = $(this),
-            $dropmenu = $(e.target).find('.dropdown-menu'),
-            tableOffsetHeight = $table.offset().top + $table.height(),
-            menuOffsetHeight = $dropmenu.offset().top + $dropmenu.outerHeight(true);
-
-        if (menuOffsetHeight > tableOffsetHeight)
-            $table.css("padding-bottom", menuOffsetHeight - tableOffsetHeight);
-    });
-    $('.table-responsive').on('hide.bs.dropdown', function() {
-        $(this).css("padding-bottom", 0);
-    });
+	
+	/* Custom Modal */
+	
+	if ($('.custom-modal').length > 0) {
+		$(".custom-modal .modal-content").prepend('<button data-dismiss="modal" class="close" type="button">×</button>');
+	}
 
     // Custom Backdrop for modal popup
 
     $('a[data-toggle="modal"]').on('click', function() {
         setTimeout(function() {
-            if ($(".modal.custom-modal").hasClass('in')) {
+            if ($(".modal.custom-modal").hasClass('show')) {
                 $(".modal-backdrop").addClass('custom-backdrop');
 
             }
