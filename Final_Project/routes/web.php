@@ -17,5 +17,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'adminController@index')->name('admindasboard');
+Route::post('/student/register', 'studentRegisterControlller@register')->name('studentregister');
 
 Route::get('/student', 'StudentController@index')->name('studentdashboard');
