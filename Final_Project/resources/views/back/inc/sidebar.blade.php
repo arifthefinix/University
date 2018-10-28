@@ -5,17 +5,13 @@
                     <ul>
                         <li class="menu-title">Main</li>
                         <li class="active">
-                            <a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="chat.html"><i class="fa fa-comments" aria-hidden="true"></i> Chat <span class="badge badge-pill bg-primary pull-right">5</span></a>
+                            <a href="{{route('admindasboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-video-camera camera" aria-hidden="true"></i> <span> Calls</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fa fa-video-camera camera" aria-hidden="true"></i> <span> Group</span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled" style="display: none;">
-                                <li><a href="voice-call.html">Voice Call</a></li>
-                                <li><a href="video-call.html">Video Call</a></li>
-                                <li><a href="incoming-call.html">Incoming Call</a></li>
+                                <li><a href="{{route('group.create')}}">Add Group</a></li>
+                                <li><a href="{{route('group.index')}}">All Groups</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
