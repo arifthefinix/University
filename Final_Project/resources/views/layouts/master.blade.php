@@ -23,6 +23,7 @@
 
   @yield('content')
   </div>
+  </div>
   <div class="sidebar-overlay" data-reff=""></div>
   <script type="text/javascript" src="{{asset('/back_end') }}/assets/js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="{{asset('/back_end') }}/assets/js/popper.min.js"></script>

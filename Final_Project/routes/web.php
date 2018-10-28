@@ -17,5 +17,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'adminController@index')->name('admindasboard');
+Route::get('/admin/profile/view', 'adminController@profile_view')->name('adminprofileview');
+Route::get('/admin/password/change', 'adminController@changepassword')->name('changepassword');
+Route::post('/admin/password/change/insert', 'adminController@changepasswordupdate')->name('changepasswordupdate');
+
+
 Route::post('/student/register', 'studentRegisterControlller@register')->name('studentregister');
 Route::get('/student', 'StudentController@index')->name('studentdashboard');
