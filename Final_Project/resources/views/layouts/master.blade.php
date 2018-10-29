@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/back_end') }}/assets/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/back_end') }}/assets/plugins/morris/morris.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/back_end') }}/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('/back_end') }}/assets/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset('/back_end') }}/assets/css/style.css">
 </head>
   @yield('header')
@@ -35,6 +36,8 @@
   <script type="text/javascript" src="{{asset('/back_end') }}/assets/plugins/morris/morris.min.js"></script>
   <script type="text/javascript" src="{{asset('/back_end') }}/assets/plugins/raphael/raphael-min.js"></script>
   <script type="text/javascript" src="{{asset('/back_end') }}/toastr.min.js"></script>
+   <script type="text/javascript" src="{{asset('/back_end') }}/assets/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="{{asset('/back_end') }}/assets/js/dataTables.bootstrap4.min.js"></script>
   <script type="text/javascript" src="{{asset('/back_end') }}/assets/js/app.js"></script>
 </body>
 </html>

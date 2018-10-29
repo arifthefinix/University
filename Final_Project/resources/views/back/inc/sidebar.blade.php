@@ -8,18 +8,17 @@
                             <a href="{{route('admindasboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-video-camera camera" aria-hidden="true"></i> <span> Group</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i> <span> Group</span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled" style="display: none;">
                                 <li><a href="{{route('group.create')}}">Add Group</a></li>
                                 <li><a href="{{route('group.index')}}">All Groups</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> <span> Email</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fa fa-university" aria-hidden="true"></i></i> <span> Universities</span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled" style="display: none;">
-                                <li><a href="compose.html">Compose Mail</a></li>
-                                <li><a href="inbox.html">Inbox</a></li>
-                                <li><a href="mail-view.html">Mail View</a></li>
+                                <li><a href="{{route('university.create')}}">Add University</a></li>
+                                <li><a href="{{route('university.index')}}">All Universities</a></li>
                             </ul>
                         </li>
                         <li>

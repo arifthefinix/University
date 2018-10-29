@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Group;
+use Carbon\carbon;
+use App\University;
 
-class GroupController extends Controller
+class UniversityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +17,12 @@ class GroupController extends Controller
      {
          $this->middleware('auth');
      }
-     
+
+
     public function index()
     {
-        $groups = Group::all();
-        return view('back.admin.group.view', compact('groups'));
+      $universities = University::all();
+      return view('back.admin.university.view', compact('universities'));
     }
 
     /**
@@ -30,7 +32,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('back.admin.group.add');
+        return view('back.admin.university.add');
     }
 
     /**
@@ -42,13 +44,14 @@ class GroupController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'group_name' => 'required|unique:groups',
+        'university_name' => 'required|unique:universities',
       ]);
 
-        Group::create([
-          'group_name' => $request->group_name,
+        University::create([
+          'university_name' => $request->university_name,
+          'created_at' => Carbon::now(),
         ]);
-        return back()->with('status','New Group Added Successfully!');
+        return back()->with('status','New University Added Successfully!');
     }
 
     /**
@@ -61,6 +64,7 @@ class GroupController extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *

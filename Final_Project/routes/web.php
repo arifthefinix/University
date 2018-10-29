@@ -21,6 +21,7 @@ Route::get('/admin/profile/view', 'adminController@profile_view')->name('adminpr
 Route::get('/admin/password/change', 'adminController@changepassword')->name('changepassword');
 Route::post('/admin/password/change/insert', 'adminController@changepasswordupdate')->name('changepasswordupdate');
 Route::resource('/group', 'GroupController');
+Route::resource('/university', 'UniversityController');
 
 Route::post('/student/register', 'studentRegisterControlller@register')->name('studentregister');
 Route::get('/student', 'StudentController@index')->name('studentdashboard');
