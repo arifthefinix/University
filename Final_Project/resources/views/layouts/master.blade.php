@@ -39,5 +39,6 @@
    <script type="text/javascript" src="{{asset('/back_end') }}/assets/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="{{asset('/back_end') }}/assets/js/dataTables.bootstrap4.min.js"></script>
   <script type="text/javascript" src="{{asset('/back_end') }}/assets/js/app.js"></script>
+  @yield('footer_script')
 </body>
 </html>

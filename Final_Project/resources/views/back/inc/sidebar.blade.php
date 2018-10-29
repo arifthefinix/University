@@ -21,6 +21,13 @@
                                 <li><a href="{{route('university.index')}}">All Universities</a></li>
                             </ul>
                         </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-university" aria-hidden="true"></i></i> <span>University Images</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('image.create')}}">Add Images</a></li>
+                                <li><a href="{{route('image.index')}}">All Images</a></li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="contacts.html"><i class="fa fa-address-card" aria-hidden="true"></i> Contacts</a>
                         </li>
