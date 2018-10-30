@@ -3,25 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Subject;
 use App\University;
 use App\Group;
 use App\Unit;
 
-class UnitController extends Controller
+class SubjectController extends Controller
 {
+
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-     public function __construct()
-     {
-         $this->middleware('auth');
-     }
     public function index()
     {
-      $units = Unit::all();
-      return view('back.admin.unit.view', compact('units'));
+      $subjects = Subject::all();
+      return view('back.admin.subject.view', compact('subjects'));
     }
 
     /**
@@ -31,9 +33,10 @@ class UnitController extends Controller
      */
     public function create()
     {
-      $universities =  University::all();
-      $groups =  Group::all();
-      return view('back.admin.unit.add', compact('universities','groups'));
+        $universities =  University::all();
+        $groups =  Group::all();
+        $units = Unit::all();
+        return view('back.admin.subject.add',compact('universities','groups','units'));
     }
 
     /**
@@ -44,20 +47,22 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-       $request->validate([
-         'unit_name' => 'required',
-         'university_id' => 'required|integer',
-         'gpa' => 'required',
-         'group_id' => 'required|integer',
-       ]);
+      $request->validate([
+        'subject_name' => 'required',
+        'university_id' => 'required|integer',
+        'unit_id' => 'required|integer',
+        'group_id' => 'required|integer',
+        'seat' => 'required|integer',
+      ]);
 
-        Unit::create([
-          'unit_name' => $request->unit_name,
-          'university_id' => $request->university_id,
-          'gpa' => $request->gpa,
-          'group_id' => $request->group_id,
-        ]);
-        return back()->with('status','New Units Added Successfully!');
+       Subject::create([
+         'subject_name' => $request->subject_name,
+         'university_id' => $request->university_id,
+         'unit_id' => $request->unit_id,
+         'group_id' => $request->group_id,
+         'seat' => $request->seat,
+       ]);
+       return back()->with('status','New Subject Added Successfully!');
     }
 
     /**
