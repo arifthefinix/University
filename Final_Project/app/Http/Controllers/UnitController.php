@@ -55,7 +55,9 @@ class UnitController extends Controller
           'unit_name' => $request->unit_name,
           'university_id' => $request->university_id,
           'gpa' => $request->gpa,
+          'application_deadline' => $request->application_deadline,
           'group_id' => $request->group_id,
+
         ]);
         return back()->with('status','New Units Added Successfully!');
     }

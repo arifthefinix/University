@@ -73,6 +73,17 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label  class="col-form-label col-md-3">Application Deadline</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control{{ $errors->has('application_deadline') ? ' is-invalid' : '' }}" placeholder="Enter the date of application deadline" name="application_deadline" value="{{ old('application_deadline') }}" required>
+                      @if ($errors->has('application_deadline'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('application_deadline') }}</strong>
+                          </span>
+                      @endif
+                    </div>
+                </div>
                 <div class="text-right m-auto">
                     <button type="submit" class="btn btn-primary">Add Unit</button>
                 </div>

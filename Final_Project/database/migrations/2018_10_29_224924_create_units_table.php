@@ -18,6 +18,7 @@ class CreateUnitsTable extends Migration
             $table->string('unit_name');
             $table->integer('university_id')->comment('Foreign key of university model');
             $table->string('gpa');
+            $table->string('application_deadline')->nullable();
             $table->integer('group_id');
             $table->timestamps();
         });
