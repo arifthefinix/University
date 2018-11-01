@@ -76,10 +76,21 @@
                 <div class="form-group row">
                     <label  class="col-form-label col-md-3">Application Deadline</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control{{ $errors->has('application_deadline') ? ' is-invalid' : '' }}" placeholder="Enter the date of application deadline" name="application_deadline" value="{{ old('application_deadline') }}" required>
+                      <input type="text" class=" datetimepicker form-control{{ $errors->has('application_deadline') ? ' is-invalid' : '' }}" placeholder="Enter the date of application deadline" name="application_deadline" value="{{ old('application_deadline') }}" required>
                       @if ($errors->has('application_deadline'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('application_deadline') }}</strong>
+                          </span>
+                      @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label  class="col-form-label col-md-3">Exam Date</label>
+                    <div class="col-md-9">
+                      <input type="text" class="datetimepicker form-control{{ $errors->has('exam_date') ? ' is-invalid' : '' }}" placeholder="Enter the Date of Exam" name="exam_date" value="{{ old('exam_date') }}" required>
+                      @if ($errors->has('exam_date'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('exam_date') }}</strong>
                           </span>
                       @endif
                     </div>
