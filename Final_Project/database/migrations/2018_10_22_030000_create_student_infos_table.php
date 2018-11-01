@@ -17,6 +17,8 @@ class CreateStudentInfosTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->comment('Foreign key of User model');
             $table->string('phone')->nullable();
+            $table->string('dob');
+            $table->string('gender');
             $table->string('ssc_year');
             $table->string('ssc_gpa');
             $table->string('hsc_year');

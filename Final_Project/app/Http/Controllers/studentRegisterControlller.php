@@ -22,6 +22,8 @@ class studentRegisterControlller extends Controller
         'hsc_year' => 'required',
         'hsc_gpa' => 'required',
         'group' => 'required',
+        'dob' => 'required',
+        'gender' => 'required',
         'password' => 'required | min:6 | confirmed',
       ]);
 
@@ -41,6 +43,8 @@ class studentRegisterControlller extends Controller
         'hsc_gpa' =>  $request->hsc_gpa,
         'group' =>  $request->group,
         'address' =>  $request->address,
+        'dob' => $request->dob,
+        'gender' => $request->gender,
         'created_at' => Carbon::now(),
       ]);
       return redirect()->route('login');

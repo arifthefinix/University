@@ -1,0 +1,49 @@
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Main</li>
+                        <li class="active">
+                            <a href="{{route('admindasboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i> <span> Group</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('group.create')}}">Add Group</a></li>
+                                <li><a href="{{route('group.index')}}">All Groups</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-university" aria-hidden="true"></i></i> <span> Universities</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('university.create')}}">Add University</a></li>
+                                <li><a href="{{route('university.index')}}">All Universities</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-university" aria-hidden="true"></i></i> <span>University Images</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('image.create')}}">Add Images</a></li>
+                                <li><a href="{{route('image.index')}}">All Images</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-university" aria-hidden="true"></i></i> <span>University Units</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('unit.create')}}">Add Unit</a></li>
+                                <li><a href="{{route('unit.index')}}">All Units</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-university" aria-hidden="true"></i></i> <span>Subjects</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('subject.create')}}">Add Subject</a></li>
+                                <li><a href="{{route('subject.index')}}">All Subjects</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">

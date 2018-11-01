@@ -95,7 +95,29 @@
                       @endif
                     </div>
                 </div>
-                <div class="text-right m-auto">
+                <div class="form-group row">
+                    <label  class="col-form-label col-md-3">Exam Fee</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control{{ $errors->has('fee') ? ' is-invalid' : '' }}" placeholder="Enter the Exam Fee" name="fee" value="{{ old('fee') }}" required>
+                      @if ($errors->has('fee'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('fee') }}</strong>
+                          </span>
+                      @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label  class="col-form-label col-md-3">Apply Process</label>
+                    <div class="col-md-9">
+                      <textarea type="text" class="form-control{{ $errors->has('apply_process') ? ' is-invalid' : '' }}" placeholder="Enter the Apply Process for this Unit" name="apply_process" required>{{ old('apply_process') }}</textarea>
+                      @if ($errors->has('apply_process'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('apply_process') }}</strong>
+                          </span>
+                      @endif
+                    </div>
+                </div>
+                <div class="text-center m-auto">
                     <button type="submit" class="btn btn-primary">Add Unit</button>
                 </div>
               </form>

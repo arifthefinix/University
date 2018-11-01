@@ -42,6 +42,7 @@
                                 <td>{{ App\Group::find($unit->group_id)->group_name }}</td>
                                 <td>{{ $unit->application_deadline }}</td>
                                 <td>
+                                  <a href="#exampleModalCenter{{ $key }}" data-toggle="modal" class="btn btn-info" title="Show Details"> <i class="fa fa-eye"></i></a>
                                   <a href="#" class="btn btn-warning"> <i class="fa fa-pencil"></i></a>
                                   <a href="#" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
                                 </td>
@@ -50,6 +51,55 @@
                       </tbody>
                   </table>
               </div>
+
+              @foreach ($units as $key => $unit)
+                  <div class="modal fade" id="exampleModalCenter{{ ++$key }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Details About {{ $unit->unit_name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="">
+                          <h4>University Name</h4>
+                          <p>{{ App\University::find($unit->university_id)->university_name }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Group Name</h4>
+                          <p>{{ App\Group::find($unit->group_id)->group_name }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Required GPA</h4>
+                          <p>{{ $unit->gpa }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Application Deadline</h4>
+                          <p>{{ $unit->application_deadline }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Exam Date</h4>
+                          <p>{{ $unit->exam_date }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Exam Fee</h4>
+                          <p>{{ $unit->fee }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Apply Process</h4>
+                          <p>{{ $unit->apply_process }}</p>
+                        </div>
+                      </div>
+                      <div class="modal-footer m-auto">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+              @endforeach
+
           </div>
       </div>
   </div>

@@ -51,6 +51,8 @@ class UnitController extends Controller
          'application_deadline' => 'required',
          'exam_date' => 'required',
          'group_id' => 'required|integer',
+         'fee' => 'required',
+         'apply_process' => 'required',
        ]);
         Unit::create([
           'unit_name' => $request->unit_name,
@@ -59,6 +61,8 @@ class UnitController extends Controller
           'application_deadline' => $request->application_deadline,
           'exam_date' => $request->exam_date,
           'group_id' => $request->group_id,
+          'fee' => $request->fee,
+          'apply_process' => $request->apply_process,
         ]);
         return back()->with('status','New Units Added Successfully!');
     }

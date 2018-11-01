@@ -2,7 +2,7 @@
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
-                <a href="{{route('admindasboard')}}" class="logo">
+                <a href="{{route('studentdashboard')}}" class="logo">
                     <img src="{{asset('/back_end') }}/assets/img/logo.png" width="40" height="40" alt="">
                 </a>
             </div>
@@ -71,7 +71,7 @@
 						<span>{{ Auth::user()->name }}</span>
                     </a>
     					<div class="dropdown-menu">
-    						<a class="dropdown-item" href="{{route('adminprofileview')}}">My Profile</a>
+    						<a class="dropdown-item" href="{{route('studentprofileview')}}">My Profile</a>
     						<a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
     						<a class="dropdown-item" href="{{route('changepassword')}}">Change Password</a>
     						<a class="dropdown-item" href="{{ route('logout') }}"

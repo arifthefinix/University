@@ -21,6 +21,8 @@ class CreateUnitsTable extends Migration
             $table->string('application_deadline')->nullable();
             $table->string('exam_date')->nullable();
             $table->integer('group_id');
+            $table->integer('fee');
+            $table->longText('apply_process');
             $table->timestamps();
         });
     }
