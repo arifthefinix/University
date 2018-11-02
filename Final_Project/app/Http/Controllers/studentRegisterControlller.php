@@ -41,7 +41,7 @@ class studentRegisterControlller extends Controller
         'ssc_gpa' =>  $request->ssc_gpa,
         'hsc_year' =>  $request->hsc_year,
         'hsc_gpa' =>  $request->hsc_gpa,
-        'group' =>  $request->group,
+        'group_id' =>  $request->group,
         'address' =>  $request->address,
         'dob' => $request->dob,
         'gender' => $request->gender,

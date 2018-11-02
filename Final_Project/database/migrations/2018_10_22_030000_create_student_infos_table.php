@@ -23,7 +23,7 @@ class CreateStudentInfosTable extends Migration
             $table->string('ssc_gpa');
             $table->string('hsc_year');
             $table->string('hsc_gpa');
-            $table->string('group');
+            $table->integer('group_id');
             $table->longText('address')->nullable();
             $table->softDeletes();
             $table->timestamps();

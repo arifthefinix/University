@@ -16,37 +16,37 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                 <div class="dash-widget dash-widget5">
-                    <span class="dash-widget-icon bg-success"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+                    <span class="dash-widget-icon bg-success"><i class="fa fa-university" aria-hidden="true"></i></span>
                     <div class="dash-widget-info">
-                        <h3>1</h3>
-                        <span>Admin</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                <div class="dash-widget dash-widget5">
-                    <span class="dash-widget-icon bg-success"><i class="fa fa-user-o" aria-hidden="true"></i></span>
-                    <div class="dash-widget-info">
-                        <h3>1</h3>
-                        <span>Modarators</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                <div class="dash-widget dash-widget5">
-                    <span class="dash-widget-icon bg-success"><i class="fa fa-user-o" aria-hidden="true"></i></span>
-                    <div class="dash-widget-info">
-                        <h3>1</h3>
+                        <h3>{{ App\University::count() }}</h3>
                         <span>Universities</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                 <div class="dash-widget dash-widget5">
+                    <span class="dash-widget-icon bg-success"><i class="fa fa-book" aria-hidden="true"></i></span>
+                    <div class="dash-widget-info">
+                        <h3>{{ App\Unit::count() }}</h3>
+                        <span>Units</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                <div class="dash-widget dash-widget5">
+                    <span class="dash-widget-icon bg-success"><i class="fa fa-book" aria-hidden="true"></i></span>
+                    <div class="dash-widget-info">
+                        <h3>{{ App\Subject::count() }}</h3>
+                        <span>Subjects</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                <div class="dash-widget dash-widget5">
                     <span class="dash-widget-icon bg-success"><i class="fa fa-user-o" aria-hidden="true"></i></span>
                     <div class="dash-widget-info">
-                        <h3>1</h3>
-                        <span>Students</span>
+                        <h3>{{ App\User::count() }}</h3>
+                        <span>Users</span>
                     </div>
                 </div>
             </div>

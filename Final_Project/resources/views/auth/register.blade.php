@@ -144,9 +144,9 @@
                                 <div class="col-md-12">
                                   <select id="group" class="form-control{{ $errors->has('group') ? ' is-invalid' : '' }}" name="group" value="{{ old('group') }}" required autofocus>
                                   <option>--Select--</option>
-                                  <option value="Science">Science</option>
-                                  <option value="Commerce">Commerce</option>
-                                  <option value="arts">Arts</option>
+                                  <option value="1">Science</option>
+                                  <option value="2">Commerce</option>
+                                  <option value="3">Arts</option>
                                 </select>
                                 </div>
                                 @if ($errors->has('group'))
