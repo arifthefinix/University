@@ -32,20 +32,22 @@
                           </tr>
                       </thead>
                       <tbody>
-                        @foreach ($units as  $unit)
+                        @foreach ($units as $key => $unit)
                           @php
-                            $subjects = App\Subject::where('unit_id','=',$unit->unit_id)->get();
+                            $subjects = App\Subject::where('unit_id','=',$unit->id)->get();
                           @endphp
-                        @endforeach
-                          {{-- @foreach ($subjects as $key => $subject)
+                          @foreach ($subjects as $key => $subject)
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td>{{ $subject->subject_name }}</td>
                                 <td>{{ App\Unit::find($subject->unit_id)->unit_name }}</td>
                                 <td>{{ App\University::find($subject->university_id)->university_name }}</td>
                                 <td>{{ $subject->seat }}</td>
+                                <td>{{ App\Group::find($subject->group_id)->group_name }}</td>
                             </tr>
-                          @endforeach --}}
+                          @endforeach
+                        @endforeach
+
                       </tbody>
                   </table>
               </div>

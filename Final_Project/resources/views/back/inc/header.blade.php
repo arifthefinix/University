@@ -12,52 +12,35 @@
             <a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
             <ul class="nav user-menu pull-right">
                 <li class="nav-item dropdown d-none d-sm-block">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-bell-o"></i> <span class="badge badge-pill bg-primary pull-right">0</span></a>
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-bell-o"></i> <span class="badge badge-pill bg-primary pull-right">{{ App\AdminNotification::where('notification_status','=','0')->get()->count() }}</span></a>
                     <div class="dropdown-menu notifications">
                         <div class="topnav-dropdown-header">
                             <span>Notifications</span>
                         </div>
                         <div class="drop-scroll">
                             <ul class="notification-list">
+                              @php
+                                $notifications = App\AdminNotification::all();
+                              @endphp
+                              @foreach ($notifications as $notification)
                                 <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media">
-                    											<span class="avatar">
-                    												<img alt="John Doe" src="assets/img/user.jpg" class="img-fluid">
-                    											</span>
-                    											<div class="media-body">
-                    												<p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
-                    												<p class="noti-time"><span class="notification-time">4 mins ago</span></p>
-                    											</div>
-                                        </div>
-                                    </a>
+                                  <a href="#">
+                                    <div class="media">
+                                      <span class="avatar">
+                                        <img alt="{{ App\User::find($notification->user_id)->name }}" src="{{ asset('storage') }}/{{ App\User::find($notification->user_id)->user_image }}" class="img-fluid">
+                                      </span>
+                                      <div class="media-body">
+                                        <p class="noti-details"><span class="noti-title"> {{ $notification->admin_notification_text }}</span></p>
+                                        <p class="noti-time"><span class="notification-time">{{ $notification->created_at->diffForHumans() }}</span></p>
+                                      </div>
+                                    </div>
+                                  </a>
                                 </li>
-                                <li class="notification-message">
-                                    <a href="activities.html">
-                                        <div class="media">
-                    											<span class="avatar">V</span>
-                    											<div class="media-body">
-                    												<p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
-                    												<p class="noti-time"><span class="notification-time">6 mins ago</span></p>
-                    											</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="notification-message">
-                                    <a href="activities.html">
-                                        <div class="media">
-                    											<span class="avatar">L</span>
-                    											<div class="media-body">
-                    												<p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
-                    												<p class="noti-time"><span class="notification-time">8 mins ago</span></p>
-                    											</div>
-                                        </div>
-                                    </a>
-                                </li>
+                              @endforeach
                             </ul>
                         </div>
                         <div class="topnav-dropdown-footer">
-                            <a href="activities.html">View all Notifications</a>
+                            <a href="{{ route('allnotification') }}">View all Notifications</a>
                         </div>
                     </div>
                 </li>

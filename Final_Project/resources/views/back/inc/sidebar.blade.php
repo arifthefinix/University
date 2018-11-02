@@ -4,7 +4,7 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Main</li>
-                        <li class="active">
+                        <li class="">
                             <a href="{{route('admindasboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li class="submenu">
@@ -40,6 +40,13 @@
                             <ul class="list-unstyled" style="display: none;">
                                 <li><a href="{{route('subject.create')}}">Add Subject</a></li>
                                 <li><a href="{{route('subject.index')}}">All Subjects</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-bell" aria-hidden="true"></i></i> <span>Student Notifications</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('notification.create')}}">Add Notification</a></li>
+                                <li><a href="{{route('notification.index')}}">All Notifications</a></li>
                             </ul>
                         </li>
                     </ul>

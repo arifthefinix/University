@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\carbon;
+use App\AdminNotification;
 
 class studentRegisterControlller extends Controller
 {
@@ -47,6 +48,13 @@ class studentRegisterControlller extends Controller
         'gender' => $request->gender,
         'created_at' => Carbon::now(),
       ]);
+
+      AdminNotification::insert([
+        'admin_notification_text' =>'New Student '. $request->name .' regestered successfully!',
+        'user_id' => $userid,
+        'created_at' => Carbon::now(),
+      ]);
+
       return redirect()->route('login');
     }
 }

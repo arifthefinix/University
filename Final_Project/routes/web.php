@@ -25,6 +25,10 @@ Route::resource('/university', 'UniversityController');
 Route::resource('/image', 'ImageController');
 Route::resource('/unit', 'UnitController');
 Route::resource('/subject', 'SubjectController');
+Route::resource('/notification', 'StudentNotificationController');
+Route::get('admin/show/allnotification','adminController@allnotification')->name('allnotification');
+Route::get('admin/notification/markread/{notification_id}','AdminNotificationController@adminnotificationmarkread')->name('adminnotificationmarkread');
+Route::get('admin/allnotification','AdminNotificationController@alladminnotification')->name('alladminnotification');
 
 
 Route::post('/student/register', 'studentRegisterControlller@register')->name('studentregister');

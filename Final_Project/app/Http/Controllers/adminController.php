@@ -7,6 +7,7 @@ use Auth;
 use App\User;
 use Hash;
 use Session;
+use App\AdminNotification;
 
 class adminController extends Controller
 
@@ -44,6 +45,11 @@ class adminController extends Controller
       else{
         return back()->withErrors('Old Password Do not match');
       }
+    }
+
+    public function allnotification(){
+      $notifications = AdminNotification::all()->where('notification_status','=','0');
+      return view('back.admin.allnotification', compact('notifications'));
     }
 
 }
