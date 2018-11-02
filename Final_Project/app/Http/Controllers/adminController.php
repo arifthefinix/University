@@ -52,4 +52,32 @@ class adminController extends Controller
       return view('back.admin.allnotification', compact('notifications'));
     }
 
+    public function adminimageupdate(Request $request){
+      if($request->hasFile('user_image')){
+        $path = $request->file('user_image')->store('user_images');
+        User::find(Auth::user()->id)->update([
+          'user_image' => $path
+        ]);
+      return back()->with('status','Profile Picture Change Successfully!');
+    }
+  }
+
+  public function adminprofileupdate($user_id){
+    $old_info = User::findorFail($user_id);
+    return view('back.admin.profile.update',compact('old_info'));
+  }
+
+  public function adminprofileedit(Request $request){
+    $request->validate([
+      'name' => 'required',
+      'email' => 'required|unique:users'
+    ]);
+
+    User::where('id','=',Auth::user()->id)->update([
+      'name'=> $request->name,
+      'email'=> $request->email,
+    ]);
+    return back()->with('status','Profile Updated Successfully!');
+  }
+
 }

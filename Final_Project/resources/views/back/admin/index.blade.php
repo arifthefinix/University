@@ -4,22 +4,19 @@
   @include('back.inc.header')
 @endsection
 
-
 @section('sidebar')
   @include('back.inc.sidebar')
 @endsection
 
-
 @section('content')
-
     <div class="content container-fluid">
         <div class="row">
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                 <div class="dash-widget dash-widget5">
-                    <span class="dash-widget-icon bg-success"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+                    <span class="dash-widget-icon bg-success"><i class="fa fa-university" aria-hidden="true"></i></span>
                     <div class="dash-widget-info">
-                        <h3>1</h3>
-                        <span>Admin</span>
+                        <h3>{{ App\University::count() }}</h3>
+                        <span>University</span>
                     </div>
                 </div>
             </div>

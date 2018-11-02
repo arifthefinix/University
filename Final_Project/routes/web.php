@@ -29,6 +29,9 @@ Route::resource('/notification', 'StudentNotificationController');
 Route::get('admin/show/allnotification','adminController@allnotification')->name('allnotification');
 Route::get('admin/notification/markread/{notification_id}','AdminNotificationController@adminnotificationmarkread')->name('adminnotificationmarkread');
 Route::get('admin/allnotification','AdminNotificationController@alladminnotification')->name('alladminnotification');
+Route::get('admin/profile/update/{user_id}','adminController@adminprofileupdate')->name('adminprofileupdate');
+Route::post('admin/profile/update','adminController@adminprofileedit')->name('adminprofileedit');
+Route::post('admin/image/update','adminController@adminimageupdate')->name('adminimageupdate');
 
 
 Route::post('/student/register', 'studentRegisterControlller@register')->name('studentregister');
