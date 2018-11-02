@@ -23,6 +23,11 @@
               <div class="card-block">
                   <h6 class="card-title text-bold">Image List</h6>
                   <table class="datatable table table-stripped table-responsive">
+                    @if(session('status'))
+                      <div class="alert alert-success">
+                        {{session('status')}}
+                      </div>
+                    @endif
                       <thead>
                           <tr>
                               <th>No.</th>
@@ -32,13 +37,16 @@
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach ($images as $key => $image)
+                        @php
+                          $i=1;
+                        @endphp
+                          @foreach ($images as $image)
                             <tr>
-                                <td>{{ ++$key }}</td>
+                                <td>{{ $i++ }}</td>
                                 <td><img src="{{ asset('/storage') }}/{{ $image->image_name }}" width="150px" class="img_fluid" alt=""></td>
                                 <td>{{ App\University::find($image->university_id)->university_name }}</td>
                                 <td>
-                                  <a href="#" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
+                                  <a href="{{ url('university/image/delete') }}/{{ $image->id }}" class="btn btn-danger text-white"> <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                           @endforeach

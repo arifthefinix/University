@@ -20,7 +20,12 @@
           <div class="card-box">
               <div class="card-block">
                   <h6 class="card-title text-bold">University Unit List</h6>
-                  <table class="datatable table table-stripped">
+                  @if(session('status'))
+                    <div class="alert alert-success">
+                      {{session('status')}}
+                    </div>
+                  @endif
+                  <table class="datatable table table-stripped table-responsive">
                       <thead>
                           <tr>
                               <th>No.</th>
@@ -33,18 +38,21 @@
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach ($units as $key => $unit)
+                        @php
+                          $i=1;
+                        @endphp
+                          @foreach ($units as $key=> $unit)
                             <tr>
-                                <td>{{ ++$key }}</td>
+                                <td>{{ $i++ }}</td>
                                 <td>{{ $unit->unit_name }}</td>
                                 <td>{{ App\University::find($unit->university_id)->university_name }}</td>
                                 <td>{{ $unit->gpa }}</td>
                                 <td>{{ App\Group::find($unit->group_id)->group_name }}</td>
                                 <td>{{ $unit->application_deadline }}</td>
                                 <td>
-                                  <a href="#exampleModalCenter{{ $key }}" data-toggle="modal" class="btn btn-info" title="Show Details"> <i class="fa fa-eye"></i></a>
-                                  <a href="#" class="btn btn-warning"> <i class="fa fa-pencil"></i></a>
-                                  <a href="#" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
+                                  <a href="#exampleModalCenter{{ ++$key }}" data-toggle="modal" class="btn btn-info" title="Show Details"> <i class="fa fa-eye"></i></a>
+                                  <a href="{{ url('unit/edit') }}/{{ $unit->id }}" class="btn btn-warning"> <i class="fa fa-pencil"></i></a>
+                                  <a href="{{ url('unit/delete') }}/{{ $unit->id }}" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                           @endforeach
@@ -86,6 +94,10 @@
                         <div class="">
                           <h4>Exam Fee</h4>
                           <p>{{ $unit->fee }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Total NUmber of Seats</h4>
+                          <p>{{ $unit->seat }}</p>
                         </div>
                         <div class="">
                           <h4>Apply Process</h4>

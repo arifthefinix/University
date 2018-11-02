@@ -16,12 +16,17 @@
         </div>
 
         <div class="col-sm-5 col-8 text-right m-b-30">
-            <a href="#" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+            <a href="{{ url('student/profile/update') }}/{{ Auth::user()->id }}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
         </div>
     </div>
     <div class="card-box">
         <div class="row">
             <div class="col-md-12">
+              @if(session('status'))
+                <div class="alert alert-success">
+                  {{session('status')}}
+                </div>
+              @endif
                 <div class="profile-view">
                     <div class="profile-img-wrap">
                         <div class="profile-img">
@@ -37,6 +42,17 @@
                                     <div class="staff-id">Student</div>
                                     <div class="staff-id">Gender : {{ App\student_info::where('user_id', '=', Auth::user()->id)->firstorFail()->gender }}</div>
                                     <div class="staff-id">Date of Birth : {{ App\student_info::where('user_id', '=', Auth::user()->id)->firstorFail()->dob }}</div>
+                                    <div class="staff-msg">
+                                      <form class="" action="{{ route('studentimageupdate') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="">
+                                          <input type="file" class="form-group" name="user_image" required>
+                                        </div>
+                                        <div class="">
+                                          <button type="submit" class="btn btn-primary">Update Picture</button>
+                                        </div>
+                                      </form>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -62,12 +78,12 @@
                                         <span class="text">{{ App\student_info::where('user_id', '=', Auth::user()->id)->firstorFail()->hsc_year }}</span>
                                     </li>
                                     <li>
-                                        <span class="title">HSC Year:</span>
+                                        <span class="title">HSC GPA:</span>
                                         <span class="text">{{ App\student_info::where('user_id', '=', Auth::user()->id)->firstorFail()->hsc_gpa }}</span>
                                     </li>
                                     <li>
                                         <span class="title">Group:</span>
-                                        <span class="text">{{ App\student_info::where('user_id', '=', Auth::user()->id)->firstorFail()->group }}</span>
+                                        <span class="text">{{ App\Group::find(App\student_info::where('user_id', '=', Auth::user()->id)->firstorFail()->group_id)->group_name }}</span>
                                     </li>
                                     <li>
                                         <span class="title">Address:</span>

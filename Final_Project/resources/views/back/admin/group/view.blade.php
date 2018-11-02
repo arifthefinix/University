@@ -4,11 +4,9 @@
   @include('back.inc.header')
 @endsection
 
-
 @section('sidebar')
   @include('back.inc.sidebar')
 @endsection
-
 
 @section('content')
 <div class="content container-fluid">
@@ -23,6 +21,11 @@
           <div class="card-box">
               <div class="card-block">
                   <h6 class="card-title text-bold">Group List</h6>
+                  @if(session('status'))
+                    <div class="alert alert-success">
+                      {{session('status')}}
+                    </div>
+                  @endif
                   <table class="datatable table table-stripped">
                       <thead>
                           <tr>
@@ -32,13 +35,16 @@
                           </tr>
                       </thead>
                       <tbody>
+                        @php
+                          $i=1;
+                        @endphp
                           @foreach ($groups as $key => $group)
                             <tr>
-                                <td>{{ ++$key }}</td>
+                                <td>{{ $i++ }}</td>
                                 <td>{{ $group->group_name }}</td>
                                 <td>
-                                  <a href="#" class="btn btn-warning"> <i class="fa fa-pencil"></i></a>
-                                  <a href="#" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
+                                  <a href="{{ url('group/edit') }}/{{ $group->id }}" class="btn btn-warning"> <i class="fa fa-pencil"></i></a>
+                                  <a href="{{ url('group/delete') }}/{{ $group->id }}" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                           @endforeach

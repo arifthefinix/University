@@ -3,7 +3,7 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Main</li>
-                        <li class="active">
+                        <li class="">
                             <a href="{{route('studentdashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li class="">

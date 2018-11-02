@@ -58,9 +58,24 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+     public function editgroup($group_id){
+       $old_info = Group::findorFail($group_id);
+       return view('back.admin.group.edit',compact('old_info'));
+     }
+     public function updategroup(Request $request){
+       $request->validate([
+         'group_name' => 'required|unique:groups',
+       ]);
+       Group::where('id','=',$request->group_id)->update([
+         'group_name' => $request->group_name,
+       ]);
+       return back()->with('status','Group Name Updated Successfully!');
+     }
+    public function deletegroup($id)
     {
-        //
+      Group::find($id)->delete();
+      return back()->with('status','Group Delation Successfully!');
     }
     /**
      * Show the form for editing the specified resource.

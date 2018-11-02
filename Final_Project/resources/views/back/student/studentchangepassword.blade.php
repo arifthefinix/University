@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('header')
-  @include('back.inc.header')
+  @include('back.student.inc.header')
 @endsection
 
 
 @section('sidebar')
-  @include('back.inc.sidebar')
+  @include('back.student.inc.sidebar')
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
                 {{session('status')}}
               </div>
             @endif
-          
+
             <form method="post" action="{{route('studentpasswordupdate')}}">
               @csrf
                 <div class="row">

@@ -22,6 +22,7 @@ class CreateUnitsTable extends Migration
             $table->string('exam_date')->nullable();
             $table->integer('group_id');
             $table->integer('fee');
+            $table->integer('seat');
             $table->longText('apply_process');
             $table->timestamps();
         });

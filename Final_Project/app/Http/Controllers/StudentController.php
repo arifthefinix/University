@@ -9,6 +9,7 @@ use App\User;
 use App\University;
 use App\Unit;
 use App\Subject;
+use App\Group;
 use Hash;
 use Session;
 use DB;
@@ -114,4 +115,50 @@ class StudentController extends Controller
      ->get();
     return view('back.student.allsubjects',compact('units'));
   }
+
+  public function studentimageupdate(Request $request){
+    if($request->hasFile('user_image')){
+      $path = $request->file('user_image')->store('user_images');
+      User::find(Auth::user()->id)->update([
+        'user_image' => $path
+      ]);
+    return back()->with('status','Profile Picture Change Successfully!');
+  }
+}
+
+public function studentprofileupdate($user_id){
+  $old_info = User::findorFail($user_id);
+  $old_student_info = student_info::where('user_id','=',$user_id)->get();
+  $groups = Group::all();
+  return view('back.student.profileupdate',compact('old_info','$old_student_info','groups'));
+}
+
+public function studentprofileedit(Request $request){
+  $request->validate([
+    'name' => 'required|max:255',
+    'email' => 'required|email|unique:users',
+    'phone' => 'required|max:16',
+    'ssc_year' => 'required',
+    'ssc_gpa' => 'required',
+    'hsc_year' => 'required',
+    'hsc_gpa' => 'required',
+    'group' => 'required',
+  ]);
+
+  User::where('id','=',Auth::user()->id)->update([
+    'name'=> $request->name,
+    'email'=> $request->email,
+  ]);
+  student_info::where('user_id','=',Auth::user()->id)->update([
+    'phone' =>  $request->phone,
+    'ssc_year' => $request->ssc_year,
+    'ssc_gpa' => $request->ssc_gpa,
+    'hsc_year' => $request->hsc_year,
+    'hsc_gpa' => $request->hsc_gpa,
+    'group_id' => $request->group,
+  ]);
+  return back()->with('status','Profile Updated Successfully!');
+}
+
+
 }

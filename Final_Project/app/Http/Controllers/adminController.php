@@ -7,7 +7,10 @@ use Auth;
 use App\User;
 use Hash;
 use Session;
+use App\student_info;
 use App\AdminNotification;
+use DB;
+use Carbon\Carbon;
 
 class adminController extends Controller
 
@@ -19,7 +22,8 @@ class adminController extends Controller
 
     }
     public function index (){
-      return view('back.admin.index');
+      $students = DB::table('student_infos')->orderBy('id','desc')->limit(10)->get();
+      return view('back.admin.index',compact('students'));
     }
     public function profile_view (){
       return view('back.admin.profile.view');
@@ -78,6 +82,16 @@ class adminController extends Controller
       'email'=> $request->email,
     ]);
     return back()->with('status','Profile Updated Successfully!');
+  }
+  public function allstudent(){
+    $students = DB::table('student_infos')->orderBy('id','desc')->get();
+    return view('back.admin.student.allstudent',compact('students'));
+  }
+  public function studentdelete($user_id){
+    student_info::where('user_id','=',$user_id)->delete();
+    User::find($user_id)->delete();
+    return back()->with('status','Student Delation Successfully!');
+
   }
 
 }

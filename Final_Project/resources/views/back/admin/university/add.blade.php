@@ -4,11 +4,9 @@
   @include('back.inc.header')
 @endsection
 
-
 @section('sidebar')
   @include('back.inc.sidebar')
 @endsection
-
 
 @section('content')
 <div class="content container-fluid">
@@ -16,7 +14,6 @@
       <div class="col-sm-12">
           <h4 class="page-title">Add New University</h4>
       </div>
-
   </div>
   <div class="row">
       <div class="offset-md-2 col-md-6">
@@ -38,7 +35,7 @@
                           </span>
                       @endif
                   </div>
-                  <div class="text-right m-auto">
+                  <div class="text-center m-auto">
                       <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
               </form>

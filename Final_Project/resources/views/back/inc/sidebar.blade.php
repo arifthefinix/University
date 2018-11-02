@@ -49,6 +49,9 @@
                                 <li><a href="{{route('notification.index')}}">All Notifications</a></li>
                             </ul>
                         </li>
+                        <li class="">
+                            <a href="{{ route('allstudent') }}"><i class="fa fa-users"></i>Students List</a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -14,7 +14,7 @@
 <div class="content container-fluid">
   <div class="row">
       <div class="col-sm-12">
-          <h4 class="page-title">Add New Group</h4>
+          <h4 class="page-title">Update Group</h4>
       </div>
 
   </div>
@@ -26,12 +26,13 @@
                 {{session('status')}}
               </div>
             @endif
-              <h4 class="card-title">Add New</h4>
-              <form action="{{route('group.store')}}" method="post">
+              <h4 class="card-title">Update <span class="text-primary"> {{$old_info->group_name}}</span></h4>
+              <form action="{{ url('group/update') }}" method="post">
                 @csrf
                   <div class="form-group">
                       <label>Group Name</label>
-                      <input type="text" class="form-control{{ $errors->has('group_name') ? ' is-invalid' : '' }}" placeholder="Enter new group name" name="group_name" value="{{ old('group_name') }}">
+                      <input type="hidden"  name="group_id" value="{{ $old_info->id }}">
+                      <input type="text" class="form-control{{ $errors->has('group_name') ? ' is-invalid' : '' }}" placeholder="Enter new group name" name="group_name" value="{{ $old_info->group_name }}">
                       @if ($errors->has('group_name'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('group_name') }}</strong>

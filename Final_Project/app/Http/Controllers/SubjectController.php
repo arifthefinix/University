@@ -67,6 +67,37 @@ class SubjectController extends Controller
        return back()->with('status','New Subject Added Successfully!');
     }
 
+
+    public function editsubject($subject_id){
+      $old_info = Subject::findorFail($subject_id);
+      $universities = University::all();
+      $units = Unit::all();
+      $groups = Group::all();
+      return view('back.admin.subject.edit',compact('old_info','universities','groups','units'));
+    }
+    public function updatesubject(Request $request){
+      $request->validate([
+        'subject_name' => 'required',
+        'university_id' => 'required|integer',
+        'unit_id' => 'required|integer',
+        'group_id' => 'required|integer',
+        'seat' => 'required|integer',
+      ]);
+      Subject::where('id','=',$request->subject_id)->update([
+        'subject_name' => $request->subject_name,
+        'university_id' => $request->university_id,
+        'unit_id' => $request->unit_id,
+        'group_id' => $request->group_id,
+        'seat' => $request->seat,
+      ]);
+      return back()->with('status','Subject Updated Successfully!');
+    }
+   public function deletesubject($id)
+   {
+     Subject::find($id)->delete();
+     return back()->with('status','Subject Delation Successfully!');
+   }
+
     /**
      * Display the specified resource.
      *

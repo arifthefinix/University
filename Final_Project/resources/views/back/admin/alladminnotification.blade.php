@@ -39,7 +39,7 @@
                                 <td>{{ $alladminnotification->admin_notification_text }}</td>
                                 <td>{{ $alladminnotification->created_at->diffForHumans() }}</td>
                                 <td>
-                                  <a href="#" title="Delete" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
+                                  <a href="{{ url('admin/notification/delete') }}/{{$alladminnotification->id}}" title="Delete" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                           @endforeach

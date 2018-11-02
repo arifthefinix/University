@@ -19,6 +19,11 @@
       <div class="offset-sm-1 col-sm-9">
           <div class="card-box">
               <div class="card-block">
+                  @if(session('status'))
+                    <div class="alert alert-danger">
+                      {{session('status')}}
+                    </div>
+                  @endif
                   <h6 class="card-title text-bold">Notifications</h6>
                   <a href="{{ route('alladminnotification') }}" class="btn btn-primary float-right">View all</a>
                   <table class="datatable table table-stripped table-responsive text-center">
@@ -41,7 +46,7 @@
                                 <td>{{ $notification->created_at->diffForHumans() }}</td>
                                 <td>
                                   <a href="{{ url('admin/notification/markread') }}/{{$notification->id}}" title="Mark as read" class="btn btn-primary"> <i class="fa fa-check"></i></a>
-                                  <a href="#" title="Delete" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
+                                  <a href="{{ url('admin/notification/delete') }}/{{$notification->id}}" title="Delete" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
 

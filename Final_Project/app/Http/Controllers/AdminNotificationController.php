@@ -24,4 +24,9 @@ class AdminNotificationController extends Controller
         $alladminnotifications =  AdminNotification::all();
         return view('back.admin.alladminnotification', compact('alladminnotifications'));
     }
+
+    public function adminnotificationdelete($notification_id){
+        AdminNotification::find($notification_id)->delete();
+        return back()->with('status','Notification Delation Successfully!');
+    }
 }

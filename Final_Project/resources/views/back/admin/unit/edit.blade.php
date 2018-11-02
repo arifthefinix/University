@@ -4,19 +4,16 @@
   @include('back.inc.header')
 @endsection
 
-
 @section('sidebar')
   @include('back.inc.sidebar')
 @endsection
-
 
 @section('content')
 <div class="content container-fluid">
   <div class="row">
       <div class="col-sm-12">
-          <h4 class="page-title">Add New University Unit</h4>
+          <h4 class="page-title">Edit <span class="text-primary"> {{ $old_info->unit_name }}</span> Unit</h4>
       </div>
-
   </div>
   <div class="row">
       <div class="offset-md-2 col-md-6">
@@ -26,8 +23,8 @@
                 {{session('status')}}
               </div>
             @endif
-              <h4 class="card-title">Add New Unit</h4>
-              <form action="{{route('unit.store')}}" method="post">
+              <h4 class="card-title">Update {{ $old_info->unit_name }} Unit</h4>
+              <form action="{{route('unitupdate')}}" method="post">
                 @csrf
                 <div class="form-group row">
                   <label class="col-form-label col-md-3"> Select University</label>
@@ -43,7 +40,8 @@
                 <div class="form-group row">
                     <label  class="col-form-label col-md-3">Unit Name</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control{{ $errors->has('unit_name') ? ' is-invalid' : '' }}" placeholder="Enter new unit name" name="unit_name" value="{{ old('unit_name') }}" required>
+                      <input type="text" class="form-control{{ $errors->has('unit_name') ? ' is-invalid' : '' }}" placeholder="Enter new unit name" name="unit_name" value="{{ $old_info->unit_name }}" required>
+                      <input type="hidden" name="unit_id" value="{{ $old_info->id }}">
                       @if ($errors->has('unit_name'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('unit_name') }}</strong>
@@ -54,7 +52,7 @@
                 <div class="form-group row">
                     <label  class="col-form-label col-md-3">Required GPA</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control{{ $errors->has('gpa') ? ' is-invalid' : '' }}" placeholder="Enter Required Gpa to apply" name="gpa" value="{{ old('gpa') }}" required>
+                      <input type="text" class="form-control{{ $errors->has('gpa') ? ' is-invalid' : '' }}" placeholder="Enter Required Gpa to apply" name="gpa" value="{{ $old_info->gpa }}" required>
                       @if ($errors->has('gpa'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('gpa') }}</strong>
@@ -76,7 +74,7 @@
                 <div class="form-group row">
                     <label  class="col-form-label col-md-3">Application Deadline</label>
                     <div class="col-md-9">
-                      <input type="text" class=" datetimepicker form-control{{ $errors->has('application_deadline') ? ' is-invalid' : '' }}" placeholder="Enter the date of application deadline" name="application_deadline" value="{{ old('application_deadline') }}" required>
+                      <input type="text" class=" datetimepicker form-control{{ $errors->has('application_deadline') ? ' is-invalid' : '' }}" placeholder="Enter the date of application deadline" name="application_deadline" value="{{ $old_info->application_deadline }}" required>
                       @if ($errors->has('application_deadline'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('application_deadline') }}</strong>
@@ -87,7 +85,7 @@
                 <div class="form-group row">
                     <label  class="col-form-label col-md-3">Exam Date</label>
                     <div class="col-md-9">
-                      <input type="text" class="datetimepicker form-control{{ $errors->has('exam_date') ? ' is-invalid' : '' }}" placeholder="Enter the Date of Exam" name="exam_date" value="{{ old('exam_date') }}" required>
+                      <input type="text" class="datetimepicker form-control{{ $errors->has('exam_date') ? ' is-invalid' : '' }}" placeholder="Enter the Date of Exam" name="exam_date" value="{{ $old_info->exam_date }}" required>
                       @if ($errors->has('exam_date'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('exam_date') }}</strong>
@@ -98,7 +96,7 @@
                 <div class="form-group row">
                     <label  class="col-form-label col-md-3">Exam Fee</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control{{ $errors->has('fee') ? ' is-invalid' : '' }}" placeholder="Enter the Exam Fee" name="fee" value="{{ old('fee') }}" required>
+                      <input type="text" class="form-control{{ $errors->has('fee') ? ' is-invalid' : '' }}" placeholder="Enter the Exam Fee" name="fee" value="{{ $old_info->fee }}" required>
                       @if ($errors->has('fee'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('fee') }}</strong>
@@ -109,7 +107,7 @@
                 <div class="form-group row">
                     <label  class="col-form-label col-md-3">Number of Seats</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control{{ $errors->has('seat') ? ' is-invalid' : '' }}" placeholder="Enter the Number of Seats" name="seat" value="{{ old('seat') }}" required>
+                      <input type="text" class="form-control{{ $errors->has('seat') ? ' is-invalid' : '' }}" placeholder="Enter the Number of Seats" name="seat" value="{{ $old_info->seat }}" required>
                       @if ($errors->has('seat'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('seat') }}</strong>
@@ -120,7 +118,7 @@
                 <div class="form-group row">
                     <label  class="col-form-label col-md-3">Apply Process</label>
                     <div class="col-md-9">
-                      <textarea type="text" class="form-control{{ $errors->has('apply_process') ? ' is-invalid' : '' }}" placeholder="Enter the Apply Process for this Unit" name="apply_process" required>{{ old('apply_process') }}</textarea>
+                      <textarea type="text" class="form-control{{ $errors->has('apply_process') ? ' is-invalid' : '' }}" placeholder="Enter the Apply Process for this Unit" name="apply_process" required>{{ $old_info->apply_process }}</textarea>
                       @if ($errors->has('apply_process'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('apply_process') }}</strong>
@@ -129,7 +127,7 @@
                     </div>
                 </div>
                 <div class="text-center m-auto">
-                    <button type="submit" class="btn btn-primary">Add Unit</button>
+                    <button type="submit" class="btn btn-primary">Update Unit</button>
                 </div>
               </form>
           </div>

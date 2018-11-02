@@ -61,6 +61,27 @@ class UniversityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     public function edituniversity($university_id){
+       $old_info = University::findorFail($university_id);
+       return view('back.admin.university.edit',compact('old_info'));
+     }
+     public function updateuniversity(Request $request){
+       $request->validate([
+         'university_name' => 'required|unique:universities',
+       ]);
+       University::where('id','=',$request->university_id)->update([
+         'university_name' => $request->university_name,
+       ]);
+       return back()->with('status','University Name Updated Successfully!');
+     }
+    public function deleteuniversity($id)
+    {
+      University::find($id)->delete();
+      return back()->with('status','University Delation Successfully!');
+    }
+
+
     public function show($id)
     {
         //

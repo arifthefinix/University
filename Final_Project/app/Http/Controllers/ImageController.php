@@ -56,6 +56,10 @@ class ImageController extends Controller
     }
     }
 
+    public function deleteimage($id){
+      Image::find($id)->delete();
+      return back()->with('status','Image Delation Successfully!');
+    }
     /**
      * Display the specified resource.
      *

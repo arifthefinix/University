@@ -53,6 +53,7 @@ class UnitController extends Controller
          'exam_date' => 'required',
          'group_id' => 'required|integer',
          'fee' => 'required',
+         'seat' => 'required',
          'apply_process' => 'required',
        ]);
         Unit::create([
@@ -63,6 +64,7 @@ class UnitController extends Controller
           'exam_date' => $request->exam_date,
           'group_id' => $request->group_id,
           'fee' => $request->fee,
+          'seat' => $request->seat,
           'apply_process' => $request->apply_process,
         ]);
         return back()->with('status','New Units Added Successfully!');
@@ -74,6 +76,43 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     public function editunit($unit_id){
+       $old_info = Unit::findorFail($unit_id);
+       $universities = University::all();
+       $groups = Group::all();
+       return view('back.admin.unit.edit',compact('old_info','universities','groups'));
+     }
+     public function updateunit(Request $request){
+       $request->validate([
+         'unit_name' => 'required',
+         'university_id' => 'required|integer',
+         'gpa' => 'required',
+         'application_deadline' => 'required',
+         'exam_date' => 'required',
+         'group_id' => 'required|integer',
+         'fee' => 'required',
+         'seat' => 'required',
+         'apply_process' => 'required',
+       ]);
+       Unit::where('id','=',$request->unit_id)->update([
+         'unit_name' => $request->unit_name,
+         'university_id' => $request->university_id,
+         'gpa' => $request->gpa,
+         'application_deadline' => $request->application_deadline,
+         'exam_date' => $request->exam_date,
+         'group_id' => $request->group_id,
+         'fee' => $request->fee,
+         'seat' => $request->seat,
+         'apply_process' => $request->apply_process,
+       ]);
+       return back()->with('status','Unit Updated Successfully!');
+     }
+    public function deleteunit($id)
+    {
+      Unit::find($id)->delete();
+      return back()->with('status','Unit Delation Successfully!');
+    }
     public function show($id)
     {
         //
