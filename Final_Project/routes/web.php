@@ -65,3 +65,7 @@ Route::get('student/profile/update/{user_id}','StudentController@studentprofileu
 Route::post('student/profile/update','StudentController@studentprofileedit')->name('studentprofileedit');
 
 Route::get('uni/','frontController@university');
+
+Route::get('/examsubjects','HomeController@examsubjects')->name('examsubjects');
+Route::post('subject/add','HomeController@examsubjectadd')->name('examsubjectadd');
+Route::get('exam/subject/delete/{id}','HomeController@examsubjectdelete');

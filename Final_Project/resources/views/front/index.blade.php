@@ -33,7 +33,7 @@
         <div class="container bg-light pt-5 pb-5">
         	<div class="row">
 						<div class="col-md-4 text-center" id="notice_board">
-	            	<h2 class="bg-info text-center text-white">Notice Board</h2>
+	            	<h2 class="bg-info text-center text-white pt-2 pb-2">Notice Board</h2>
 	                <marquee direction="up">
 	            		<ul class="text-danger">
 	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>

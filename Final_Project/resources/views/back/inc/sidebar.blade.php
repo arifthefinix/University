@@ -52,6 +52,13 @@
                         <li class="">
                             <a href="{{ route('allstudent') }}"><i class="fa fa-users"></i>Students List</a>
                         </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-bell" aria-hidden="true"></i></i> <span>Exam</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{ route('examsubjects') }}">Subject</a></li>
+                                <li><a href="#">Add Questions</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
