@@ -30,20 +30,51 @@
 			</div>
         </div>
 
-        <div class="container">
-        	<div class="col-md-4">
-            	<h2>Notice Board</h2>
-                <marquee direction="up">
-            		<ul>
-                		<li>Last date of apply in DU is 25-02-2018</li>
-                    	<li>Last date of apply in DU is 25-02-2018</li>
-                    	<li>Last date of apply in DU is 25-02-2018</li>
-                    	<li>Last date of apply in DU is 25-02-2018</li>
-                    	<li>Last date of apply in DU is 25-02-2018</li>
-                	</ul>
-                </marquee>
-            </div>
+        <div class="container bg-light pt-5 pb-5">
+        	<div class="row">
+						<div class="col-md-4 text-center" id="notice_board">
+	            	<h2 class="bg-info text-center text-white">Notice Board</h2>
+	                <marquee direction="up">
+	            		<ul class="text-danger">
+	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
+	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
+	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
+	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
+	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
+	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
+	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
+	                	</ul>
+	                </marquee>
+	            </div>
+							<div class="col-md-8 text-center text-success" id="popular">
+								<h2>Popular Universities</h2>
+								<div class="row pt-3">
+									<div class="col-md-4 pb-4">
+										<a href=""><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+									</div>
+									<div class="col-md-4 pb-4">
+										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+									</div>
+									<div class="col-md-4 pb-4">
+										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+									</div>
+									<div class="col-md-4 pb-4">
+										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+									</div>
+									<div class="col-md-4 pb-4">
+										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+									</div>
+									<div class="col-md-4 pb-4">
+										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+									</div>
+								</div>
+							</div>
+        	</div>
         </div>
+
+				<section class="footer bg-info text-center text-white p-2">
+					<h3>All right reserved &copy;{{ date('Y') }}</h3>
+				</section>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   			<div class="modal-dialog" role="document">

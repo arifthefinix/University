@@ -12,3 +12,13 @@ ul,ol{
 	color: #ffffff;
 	padding: 10px 0px;
 }
+
+
+#popular .row .col-md-4 a img:hover{
+	transform: scale(1.2);
+	transition: all linear 2s;
+}
+
+#notice_board marquee ul li{
+	line-height: 36px;
+}

@@ -63,3 +63,5 @@ Route::get('/student/subjects/list', 'StudentController@studentsubjectslist')->n
 Route::post('student/image/update','StudentController@studentimageupdate')->name('studentimageupdate');
 Route::get('student/profile/update/{user_id}','StudentController@studentprofileupdate')->name('studentprofileupdate');
 Route::post('student/profile/update','StudentController@studentprofileedit')->name('studentprofileedit');
+
+Route::get('uni/','frontController@university');

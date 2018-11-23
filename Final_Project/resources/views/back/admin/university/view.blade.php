@@ -18,7 +18,7 @@
       </div>
   </div>
   <div class="row">
-      <div class="offset-sm-2 col-sm-6">
+      <div class="offset-sm-2 col-sm-8">
           <div class="card-box">
               <div class="card-block">
                   <h6 class="card-title text-bold">University List</h6>
