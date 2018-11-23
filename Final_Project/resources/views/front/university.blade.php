@@ -2,29 +2,21 @@
 
 @section('content')
     <div class="container-fluid p-0">
-        <img src="{{ asset('storage/') }}/university_images/3AmjMdJTpjOCTJts8mVd2e4xP0Mvof2qr9gPSHr5.jpeg" class="img-fluid" alt="">
+        <img src="{{ asset('storage/') }}/university_images/Bw8YnKKxdHhBUSWsJIXswJrzNM3KeCslPFwe4oOM.jpeg" class="img-fluid" alt="">
     </div>
 
       <div class="container bg-light pt-5 pb-5">
         <div class="row">
-          <h2>University Name</h2>
-          <p> Nescius aliqua aliquip occaecat aut tamen mentitum excepteur. Te anim aliquip
-            iudicem. Ipsum aliquip an pariatur de ullamco et eram constias.Fore proident in
-            quibusdam se deserunt sed quamquam quo aute nescius reprehenderit, appellat sint
-            multos si eram. Ullamco do fabulas se te quae labore summis incurreret quo malis
-            mentitum laborum, quis sed ab noster vidisse. Tamen adipisicing doctrina tamen
-            aliquip se labore pariatur id despicationes. Ita culpa appellat fabulas ut duis
-            appellat hic mandaremus, iis ne export mentitum, dolore singulis id senserit,
-            quamquam concursionibus in iudicem hic fabulas irure dolor si irure, te senserit
-            arbitrantur, irure eruditionem commodo culpa ullamco.
+          <h2>Dhaka University</h2>
+          <p> The University of Dhaka is the oldest university in modern Bangladesh. The university is ranked number one on the Bangladesh University Ranking 2017. Established in 1921 during the British Raj, it has made significant contributions to the modern history of Bangladesh.
           </p>
         </div>
         <div class="">
-          <h3>Exam Date: 28/05/1965</h3>
-          <h3>Exam Date: 28/05/1965</h3>
-          <h3>Exam Date: 28/05/1965</h3>
-          <h3>Exam Date: 28/05/1965</h3>
-          <h3>Number of seats: 100</h3>
+          <h4>Exam Date of A Unit: 28/11/2018</h4>
+          <h4>Exam Date of B Unit: 05/12/2018</h4>
+          <h4>Exam Date of C Unit: 12/12/2018</h4>
+          <h4>Exam Date of D Unit: 19/12/2018</h4>
+          <h4>Number of seats: 6900+</h4>
         </div>
       </div>
 

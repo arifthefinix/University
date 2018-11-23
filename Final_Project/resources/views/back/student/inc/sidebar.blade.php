@@ -15,6 +15,9 @@
                         <li class="">
                             <a href="{{route('studentsubjectslist')}}"><i class="fa fa-book"></i>Subjects</a>
                         </li>
+                        <li class="">
+                            <a href="{{route('student_exam')}}"><i class="fa fa-book"></i>Exam</a>
+                        </li>
                     </ul>
                 </div>
             </div>

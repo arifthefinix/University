@@ -36,13 +36,11 @@
 	            	<h2 class="bg-info text-center text-white pt-2 pb-2">Notice Board</h2>
 	                <marquee direction="up">
 	            		<ul class="text-danger">
-	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
-	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
-	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
-	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
-	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
-	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
-	                		  <li class="text-center">Last date of apply in DU is 25-02-2018</li>
+	                		  <li class="text-center">Admission Test Result Published of DU A Unit</li>
+	                		  <li class="text-center">Admission Test of Rajshahi University Will be held on 27th November</li>
+	                		  <li class="text-center">Admission Test Result Published of DU B Unit</li>
+	                		  <li class="text-center">Admission Test of Jahinggirnagor University Will be held on 10th December</li>
+	                		  <li class="text-center">Admission Test Result Published of DU A Unit</li>
 	                	</ul>
 	                </marquee>
 	            </div>
@@ -50,22 +48,22 @@
 								<h2>Popular Universities</h2>
 								<div class="row pt-3">
 									<div class="col-md-4 pb-4">
-										<a href=""><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+										<a href="{{ url('uni') }}"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
 									</div>
 									<div class="col-md-4 pb-4">
-										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+										<a href="#"><img src="{{ asset('front_end') }}/images/ju-logo.png" class="img-fluid rounded" alt=""></a>
 									</div>
 									<div class="col-md-4 pb-4">
-										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+										<a href="#"><img src="{{ asset('front_end') }}/images/ru-logo.jpg" class="img-fluid rounded" alt=""></a>
 									</div>
 									<div class="col-md-4 pb-4">
-										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+										<a href="#"><img src="{{ asset('front_end') }}/images/jhu-logo.png" class="img-fluid rounded" alt=""></a>
 									</div>
 									<div class="col-md-4 pb-4">
-										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+										<a href="#"><img src="{{ asset('front_end') }}/images/cu-logo.png" class="img-fluid rounded" alt=""></a>
 									</div>
 									<div class="col-md-4 pb-4">
-										<a href="#"><img src="{{ asset('front_end') }}/images/du-logo.jpg" class="img-fluid rounded" alt=""></a>
+										<a href="#"><img src="{{ asset('front_end') }}/images/KU.png" class="img-fluid rounded" alt=""></a>
 									</div>
 								</div>
 							</div>
@@ -73,7 +71,7 @@
         </div>
 
 				<section class="footer bg-info text-center text-white p-2">
-					<h3>All right reserved &copy;{{ date('Y') }}</h3>
+					<h6>All right reserved &copy;{{ date('Y') }}</h6>
 				</section>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -13,4 +13,8 @@ class frontController extends Controller
     public function university(){
       return view('front.university');
     }
+
+    public function jobcicular(){
+      return view('front.jobcicular');
+    }
 }

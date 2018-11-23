@@ -12,6 +12,7 @@ use App\Subject;
 use App\Group;
 use Hash;
 use Session;
+use App\StudentNotification;
 use DB;
 
 class StudentController extends Controller
@@ -24,7 +25,8 @@ class StudentController extends Controller
   }
 
   public function index (){
-      return view('back.student.dashboard');
+      $notifications = StudentNotification::all();
+      return view('back.student.dashboard',compact('notifications'));
   }
 
   public function studentprofileview (){
@@ -160,5 +162,13 @@ public function studentprofileedit(Request $request){
   return back()->with('status','Profile Updated Successfully!');
 }
 
+
+
+  public function student_exam(){
+    return view('back.student.exam.step1');
+  }
+  public function student_exam_question(){
+    return view('back.student.exam.step2');
+  }
 
 }

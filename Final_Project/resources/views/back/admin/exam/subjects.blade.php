@@ -43,9 +43,9 @@
       </div>
       <div class="col-md-5">
           <div class="card-box">
-            @if(session('status'))
+            @if(session('status_1'))
               <div class="alert alert-success">
-                {{session('status')}}
+                {{session('status_1')}}
               </div>
             @endif
               <h4 class="card-title">List of All Subjects</h4>
@@ -66,7 +66,6 @@
                             <td>{{ $i++ }}</td>
                             <td>{{ $exam_subject_name->exam_subject_name }}</td>
                             <td>
-                              <a href="{{ url('university/edit') }}/{{ $exam_subject_name->id }}" class="btn btn-warning"> <i class="fa fa-pencil"></i></a>
                               <a href="{{ url('exam/subject/delete') }}/{{ $exam_subject_name->id }}" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>

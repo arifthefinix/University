@@ -53,12 +53,28 @@
                             <a href="{{ route('allstudent') }}"><i class="fa fa-users"></i>Students List</a>
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-bell" aria-hidden="true"></i></i> <span>Exam</span> <span class="menu-arrow"></span></a>
-                            <ul class="list-unstyled" style="display: none;">
-                                <li><a href="{{ route('examsubjects') }}">Subject</a></li>
-                                <li><a href="#">Add Questions</a></li>
+                            <a href="javascript:void(0);"><i class="fa fa-share-alt" aria-hidden="true"></i> <span>Exam</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                              <li>
+                                  <a href="{{ route('examsubjects') }}"><span>Subject</span></a>
+                              </li>
+                                <li class="submenu">
+                                    <a href="javascript:void(0);"><span>Questions</span> <span class="menu-arrow"></span></a>
+                                    <ul style="display: none;">
+                                        <li><a href="{{ route('addquestion') }}"><span>Add Question</span></a></li>
+                                        <li><a href="{{ route('allquestion') }}"><span>All Questions</span></a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-bell" aria-hidden="true"></i></i> <span>Job Circular</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{{route('addjob')}}">Add Circular</a></li>
+                                <li><a href="{{route('alljob')}}">All Circulars</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </div>
             </div>

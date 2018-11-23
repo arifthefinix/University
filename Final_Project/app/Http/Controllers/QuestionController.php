@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use App\ExamSubject;
+use App\Answer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -14,7 +17,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $questions = Question::all();
+        return view('back.admin.exam.allquestions',compact('questions'));
     }
 
     /**
@@ -24,7 +28,8 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        $exam_subjects = ExamSubject::all();
+        return view('back.admin.exam.addquestion',compact('exam_subjects'));
     }
 
     /**
@@ -35,7 +40,20 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $questionid = Question::insertGetId([
+           'exam_subject_id'=>$request->exam_subject_id,
+           'question'=>$request->question,
+         ]);
+
+             Answer::create([
+               'question_id' => $questionid,
+               'option_1' => $request->option_1,
+               'option_2' => $request->option_2,
+               'option_3' => $request->option_3,
+               'option_4' => $request->option_4,
+               'correct_ans' => $request->correct_ans,
+             ]);
+             return back()->with('status','New Question Add Successfully!');
     }
 
     /**
@@ -78,8 +96,9 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy($id)
     {
-        //
+      Question::find($id)->delete();
+      return back()->with('status','Question Delation Successfully!');
     }
 }
