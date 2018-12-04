@@ -17,10 +17,10 @@ class adminController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
         $this->middleware('admin');
-
     }
+
     public function index (){
       $students = DB::table('student_infos')->orderBy('id','desc')->limit(10)->get();
       return view('back.admin.index',compact('students'));
