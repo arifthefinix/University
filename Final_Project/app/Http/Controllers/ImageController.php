@@ -21,7 +21,6 @@ class ImageController extends Controller
      }
 
     public function index()
-
     {
         $images = Image::all();
         return view('back.admin.images.view', compact('images'));
@@ -46,17 +45,19 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-      if($request->hasFile('image_name')){
-      $path = $request->file('image_name')->store('university_images');
-      Image::create([
-        'image_name' => $path,
-        'university_id' => $request->university_id,
-      ]);
-      return back()->with('status','New Image Added Successfully!');
-    }
+      if($request->hasFile('image_name'))
+      {
+        $path = $request->file('image_name')->store('university_images');
+        Image::create([
+          'image_name' => $path,
+          'university_id' => $request->university_id,
+        ]);
+        return back()->with('status','New Image Added Successfully!');
+      }
     }
 
-    public function deleteimage($id){
+    public function deleteimage($id)
+    {
       Image::find($id)->delete();
       return back()->with('status','Image Delation Successfully!');
     }

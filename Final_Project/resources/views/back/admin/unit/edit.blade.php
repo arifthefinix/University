@@ -16,7 +16,7 @@
       </div>
   </div>
   <div class="row">
-      <div class="offset-md-2 col-md-6">
+      <div class="offset-md-2 col-md-7">
           <div class="card-box">
             @if(session('status'))
               <div class="alert alert-success">
@@ -32,7 +32,7 @@
                         <select class="form-control" name="university_id">
                             <option>-- Select --</option>
                             @foreach ($universities as $university)
-                              <option value="{{ $university->id }}">{{ $university->university_name }}</option>
+                              <option value="{{ $university->id }}" {{ ($university->id==$old_info->university_id)?'selected':'' }}>{{ $university->university_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -50,12 +50,34 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label  class="col-form-label col-md-3">Required GPA</label>
+                    <label  class="col-form-label col-md-3">Required SSC GPA</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control{{ $errors->has('gpa') ? ' is-invalid' : '' }}" placeholder="Enter Required Gpa to apply" name="gpa" value="{{ $old_info->gpa }}" required>
-                      @if ($errors->has('gpa'))
+                      <input type="text" class="form-control{{ $errors->has('required_ssc_gpa') ? ' is-invalid' : '' }}" placeholder="Enter Required SSC GPA to apply" name="required_ssc_gpa" value="{{ $old_info->required_ssc_gpa }}" required>
+                      @if ($errors->has('required_ssc_gpa'))
                           <span class="invalid-feedback" role="alert">
-                              <strong>{{ $errors->first('gpa') }}</strong>
+                              <strong>{{ $errors->first('required_ssc_gpa') }}</strong>
+                          </span>
+                      @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label  class="col-form-label col-md-3">Required HSC GPA</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control{{ $errors->has('required_hsc_gpa') ? ' is-invalid' : '' }}" placeholder="Enter Required HSC GPA to apply" name="required_hsc_gpa" value="{{ $old_info->required_hsc_gpa }}" required>
+                      @if ($errors->has('required_hsc_gpa'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('required_hsc_gpa') }}</strong>
+                          </span>
+                      @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label  class="col-form-label col-md-3">Required Total GPA</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control{{ $errors->has('required_total_gpa') ? ' is-invalid' : '' }}" placeholder="Enter Required Total GPA to apply" name="required_total_gpa" value="{{ $old_info->required_total_gpa }}" required>
+                      @if ($errors->has('required_total_gpa'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('required_total_gpa') }}</strong>
                           </span>
                       @endif
                     </div>
@@ -66,7 +88,7 @@
                         <select class="form-control" name="group_id" required>
                             <option>-- Select --</option>
                             @foreach ($groups as $group)
-                              <option value="{{ $group->id }}">{{ $group->group_name }}</option>
+                              <option value="{{ $group->id }}"{{ ($group->id==$old_info->group_id)?'selected':'' }}>{{ $group->group_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -96,10 +118,10 @@
                 <div class="form-group row">
                     <label  class="col-form-label col-md-3">Exam Fee</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control{{ $errors->has('fee') ? ' is-invalid' : '' }}" placeholder="Enter the Exam Fee" name="fee" value="{{ $old_info->fee }}" required>
-                      @if ($errors->has('fee'))
+                      <input type="text" class="form-control{{ $errors->has('apply_fee') ? ' is-invalid' : '' }}" placeholder="Enter the Exam Fee" name="apply_fee" value="{{ $old_info->apply_fee }}" required>
+                      @if ($errors->has('apply_fee'))
                           <span class="invalid-feedback" role="alert">
-                              <strong>{{ $errors->first('fee') }}</strong>
+                              <strong>{{ $errors->first('apply_fee') }}</strong>
                           </span>
                       @endif
                     </div>

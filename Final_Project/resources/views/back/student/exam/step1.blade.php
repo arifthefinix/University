@@ -22,16 +22,16 @@
       <div class="offset-md-2 col-md-6">
           <div class="card-box">
               <h4 class="card-title">Select Subject</h4>
-              <form action="{{ route('student_exam_question') }}" method="post" enctype="multipart/form-data">
+              {{-- <form action="{{ url('student_exam_question/subject/') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
                   <label class="col-form-label col-md-3">Select</label>
                     <div class="col-md-9">
-                      <select class="form-control" name="">
+                      <select class="form-control" name="exam_subject_name">
                         <option value="">--Select--</option>
-                        <option value="">Bangla</option>
-                        <option value="">English</option>
-                        <option value="">Math</option>
+                        @foreach ($examsubjects as $examsubject)
+                          <option value="{{ $examsubject->id }}">{{$examsubject->exam_subject_name}}</option>
+                        @endforeach
                       </select>
                     </div>
 
@@ -39,7 +39,30 @@
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary m-auto">Continue</button>
                 </div>
-              </form>
+              </form> --}}
+              <table class="datatable table table-stripped table-responsive text-center">
+                  <thead>
+                      <tr>
+                          <th>No.</th>
+                          <th>Subject</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    @php
+                      $i=1;
+                    @endphp
+                      @foreach ($examsubjects as $examsubject)
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $examsubject->exam_subject_name }}</td>
+                            <td>
+                              <a class="btn btn-info" href="{{ url('student_exam_question/subject/') }}/{{ $examsubject->id }}">Start Exam</a>
+                            </td>
+                        </tr>
+                      @endforeach
+                  </tbody>
+              </table>
           </div>
       </div>
   </div>

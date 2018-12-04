@@ -16,7 +16,7 @@
       </div>
   </div>
   <div class="row">
-      <div class="offset-sm-1 col-sm-9">
+      <div class="col-sm-12">
           <div class="card-box">
               <div class="card-block">
                   @if(session('status'))

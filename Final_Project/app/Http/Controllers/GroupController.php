@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Group;
 
@@ -46,10 +45,10 @@ class GroupController extends Controller
         'group_name' => 'required|unique:groups',
       ]);
 
-        Group::create([
-          'group_name' => $request->group_name,
-        ]);
-        return back()->with('status','New Group Added Successfully!');
+      Group::create([
+        'group_name' => $request->group_name,
+      ]);
+      return back()->with('status','New Group Added Successfully!');
     }
 
     /**
@@ -59,11 +58,14 @@ class GroupController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function editgroup($group_id){
+     public function editgroup($group_id)
+     {
        $old_info = Group::findorFail($group_id);
        return view('back.admin.group.edit',compact('old_info'));
      }
-     public function updategroup(Request $request){
+
+     public function updategroup(Request $request)
+     {
        $request->validate([
          'group_name' => 'required|unique:groups',
        ]);
@@ -72,10 +74,11 @@ class GroupController extends Controller
        ]);
        return back()->with('status','Group Name Updated Successfully!');
      }
+
     public function deletegroup($id)
     {
       Group::find($id)->delete();
-      return back()->with('status','Group Delation Successfully!');
+      return back()->with('status','Group Delation Successfull!');
     }
     /**
      * Show the form for editing the specified resource.

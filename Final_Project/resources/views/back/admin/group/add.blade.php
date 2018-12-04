@@ -4,21 +4,18 @@
   @include('back.inc.header')
 @endsection
 
-
 @section('sidebar')
   @include('back.inc.sidebar')
 @endsection
 
-
 @section('content')
-<div class="content container-fluid">
-  <div class="row">
+  <div class="content container-fluid">
+    <div class="row">
       <div class="col-sm-12">
-          <h4 class="page-title">Add New Group</h4>
+        <h4 class="page-title">Add New Group</h4>
       </div>
-
-  </div>
-  <div class="row">
+    </div>
+    <div class="row">
       <div class="offset-md-2 col-md-6">
           <div class="card-box">
             @if(session('status'))
@@ -39,7 +36,7 @@
                       @endif
                   </div>
                   <div class="text-center m-auto">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Add Group</button>
                   </div>
               </form>
           </div>

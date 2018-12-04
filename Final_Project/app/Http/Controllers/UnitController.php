@@ -16,26 +16,27 @@ class UnitController extends Controller
      */
      public function __construct()
      {
+          $this->middleware('auth');
           $this->middleware('admin');
-         //$this->middleware('auth');
      }
-    public function index()
-    {
-      $units = Unit::all();
-      return view('back.admin.unit.view', compact('units'));
-    }
+
+     public function index()
+     {
+       $units = Unit::all();
+       return view('back.admin.unit.view', compact('units'));
+     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-      $universities =  University::all();
-      $groups =  Group::all();
-      return view('back.admin.unit.add', compact('universities','groups'));
-    }
+     public function create()
+     {
+       $universities =  University::all();
+       $groups =  Group::all();
+       return view('back.admin.unit.add', compact('universities','groups'));
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -43,32 +44,24 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-       $request->validate([
-         'unit_name' => 'required',
-         'university_id' => 'required|integer',
-         'gpa' => 'required',
-         'application_deadline' => 'required',
-         'exam_date' => 'required',
-         'group_id' => 'required|integer',
-         'fee' => 'required',
-         'seat' => 'required',
-         'apply_process' => 'required',
-       ]);
-        Unit::create([
-          'unit_name' => $request->unit_name,
-          'university_id' => $request->university_id,
-          'gpa' => $request->gpa,
-          'application_deadline' => $request->application_deadline,
-          'exam_date' => $request->exam_date,
-          'group_id' => $request->group_id,
-          'fee' => $request->fee,
-          'seat' => $request->seat,
-          'apply_process' => $request->apply_process,
+     public function store(Request $request)
+     {
+        $request->validate([
+          'unit_name' => 'required',
+          'university_id' => 'required|integer',
+          'required_ssc_gpa' => 'required',
+          'required_hsc_gpa' => 'required',
+          'required_total_gpa' => 'required',
+          'application_deadline' => 'required',
+          'exam_date' => 'required',
+          'group_id' => 'required|integer',
+          'apply_fee' => 'required',
+          'seat' => 'required',
+          'apply_process' => 'required',
         ]);
-        return back()->with('status','New Units Added Successfully!');
-    }
+        Unit::create($request->all());
+        return back()->with('status','New Unit Added Successfully!');
+     }
 
     /**
      * Display the specified resource.
@@ -77,32 +70,39 @@ class UnitController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function editunit($unit_id){
+     public function editunit($unit_id)
+     {
        $old_info = Unit::findorFail($unit_id);
        $universities = University::all();
        $groups = Group::all();
        return view('back.admin.unit.edit',compact('old_info','universities','groups'));
      }
-     public function updateunit(Request $request){
+
+     public function updateunit(Request $request)
+     {
        $request->validate([
          'unit_name' => 'required',
          'university_id' => 'required|integer',
-         'gpa' => 'required',
+         'required_ssc_gpa' => 'required',
+         'required_hsc_gpa' => 'required',
+         'required_total_gpa' => 'required',
          'application_deadline' => 'required',
          'exam_date' => 'required',
          'group_id' => 'required|integer',
-         'fee' => 'required',
+         'apply_fee' => 'required',
          'seat' => 'required',
          'apply_process' => 'required',
        ]);
        Unit::where('id','=',$request->unit_id)->update([
          'unit_name' => $request->unit_name,
          'university_id' => $request->university_id,
-         'gpa' => $request->gpa,
+         'required_ssc_gpa' => $request->required_ssc_gpa,
+         'required_hsc_gpa' => $request->required_hsc_gpa,
+         'required_total_gpa' => $request->required_total_gpa,
          'application_deadline' => $request->application_deadline,
          'exam_date' => $request->exam_date,
          'group_id' => $request->group_id,
-         'fee' => $request->fee,
+         'apply_fee' => $request->apply_fee,
          'seat' => $request->seat,
          'apply_process' => $request->apply_process,
        ]);

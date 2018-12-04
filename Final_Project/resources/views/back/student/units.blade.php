@@ -12,7 +12,7 @@
 <div class="content container-fluid">
   <div class="row">
       <div class="col-sm-12">
-          <h4 class="page-title">List of all <b class="text-primary">{{ $name->university_name }}</b> Units where you can apply</h4>
+          <h4 class="page-title">List of the <b class="text-primary">{{ $name->university_name }}</b> Units where you can apply</h4>
       </div>
   </div>
   <div class="row">
@@ -61,8 +61,16 @@
                         </div>
 
                         <div class="">
-                          <h4>Required GPA</h4>
-                          <p>{{ $unit->gpa }}</p>
+                          <h4>Required SSC GPA</h4>
+                          <p>{{ $unit->required_ssc_gpa }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Required HSC GPA</h4>
+                          <p>{{ $unit->required_hsc_gpa }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Required Total GPA</h4>
+                          <p>{{ $unit->required_total_gpa }}</p>
                         </div>
                         <div class="">
                           <h4>Application Deadline</h4>
@@ -74,7 +82,7 @@
                         </div>
                         <div class="">
                           <h4>Exam Fee</h4>
-                          <p>{{ $unit->fee }}</p>
+                          <p>{{ $unit->apply_fee }}</p>
                         </div>
                         <div class="">
                           <h4>Apply Process</h4>

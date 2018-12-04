@@ -25,14 +25,13 @@
                       {{session('status')}}
                     </div>
                   @endif
-                  <table class="datatable table table-stripped table-responsive">
+                  <table class="datatable table table-stripped table-responsive text-center">
                       <thead>
                           <tr>
                               <th>No.</th>
                               <th>Name</th>
                               <th>University Name</th>
                               <th>Required GPA</th>
-                              <th>Group Name</th>
                               <th>Application Deadline</th>
                               <th>Action</th>
                           </tr>
@@ -46,8 +45,7 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $unit->unit_name }}</td>
                                 <td>{{ App\University::find($unit->university_id)->university_name }}</td>
-                                <td>{{ $unit->gpa }}</td>
-                                <td>{{ App\Group::find($unit->group_id)->group_name }}</td>
+                                <td>{{ $unit->required_total_gpa }}</td>
                                 <td>{{ $unit->application_deadline }}</td>
                                 <td>
                                   <a href="#exampleModalCenter{{ ++$key }}" data-toggle="modal" class="btn btn-info" title="Show Details"> <i class="fa fa-eye"></i></a>
@@ -80,8 +78,16 @@
                           <p>{{ App\Group::find($unit->group_id)->group_name }}</p>
                         </div>
                         <div class="">
-                          <h4>Required GPA</h4>
-                          <p>{{ $unit->gpa }}</p>
+                          <h4>Required SSC GPA</h4>
+                          <p>{{ $unit->required_ssc_gpa }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Required HSC GPA</h4>
+                          <p>{{ $unit->required_hsc_gpa }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Required Total GPA</h4>
+                          <p>{{ $unit->required_total_gpa }}</p>
                         </div>
                         <div class="">
                           <h4>Application Deadline</h4>
@@ -93,7 +99,7 @@
                         </div>
                         <div class="">
                           <h4>Exam Fee</h4>
-                          <p>{{ $unit->fee }}</p>
+                          <p>{{ $unit->apply_fee }}</p>
                         </div>
                         <div class="">
                           <h4>Total NUmber of Seats</h4>
@@ -111,7 +117,6 @@
                   </div>
                   </div>
               @endforeach
-
           </div>
       </div>
   </div>

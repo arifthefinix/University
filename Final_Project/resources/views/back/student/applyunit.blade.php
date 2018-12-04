@@ -61,10 +61,17 @@
                           <h4>University Name</h4>
                           <p>{{ App\University::find($unit->university_id)->university_name }}</p>
                         </div>
-
+                        <div class="">
+                          <h4>Required SSC GPA</h4>
+                          <p>{{ $unit->required_ssc_gpa }}</p>
+                        </div>
+                        <div class="">
+                          <h4>Required HSC GPA</h4>
+                          <p>{{ $unit->required_hsc_gpa }}</p>
+                        </div>
                         <div class="">
                           <h4>Required GPA</h4>
-                          <p>{{ $unit->gpa }}</p>
+                          <p>{{ $unit->required_total_gpa }}</p>
                         </div>
                         <div class="">
                           <h4>Application Deadline</h4>
@@ -76,7 +83,7 @@
                         </div>
                         <div class="">
                           <h4>Exam Fee</h4>
-                          <p>{{ $unit->fee }}/- tk.</p>
+                          <p>{{ $unit->apply_fee }}/- tk.</p>
                         </div>
                         <div class="">
                           <h4>Apply Process</h4>

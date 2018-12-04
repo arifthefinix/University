@@ -17,11 +17,13 @@ class CreateUnitsTable extends Migration
             $table->increments('id');
             $table->string('unit_name');
             $table->integer('university_id')->comment('Foreign key of university model');
-            $table->string('gpa');
+            $table->string('required_ssc_gpa')->default('0');
+            $table->string('required_hsc_gpa')->default('0');
+            $table->string('required_total_gpa')->default('0');
             $table->string('application_deadline')->nullable();
             $table->string('exam_date')->nullable();
             $table->integer('group_id');
-            $table->integer('fee');
+            $table->integer('apply_fee');
             $table->integer('seat');
             $table->longText('apply_process');
             $table->timestamps();

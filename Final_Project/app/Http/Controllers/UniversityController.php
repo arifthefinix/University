@@ -15,10 +15,9 @@ class UniversityController extends Controller
      */
      public function __construct()
      {
-        // $this->middleware('auth');
+          $this->middleware('auth');
           $this->middleware('admin');
      }
-
 
     public function index()
     {
@@ -46,13 +45,14 @@ class UniversityController extends Controller
     {
       $request->validate([
         'university_name' => 'required|unique:universities',
+        'university_description' => 'required',
       ]);
 
-        University::create([
-          'university_name' => $request->university_name,
-          'created_at' => Carbon::now(),
-        ]);
-        return back()->with('status','New University Added Successfully!');
+      University::create([
+        'university_name' => $request->university_name,
+        'university_description' => $request->university_description,
+      ]);
+      return back()->with('status','New University Added Successfully!');
     }
 
     /**
@@ -62,19 +62,25 @@ class UniversityController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function edituniversity($university_id){
+     public function edituniversity($university_id)
+     {
        $old_info = University::findorFail($university_id);
        return view('back.admin.university.edit',compact('old_info'));
      }
-     public function updateuniversity(Request $request){
+
+     public function updateuniversity(Request $request)
+     {
        $request->validate([
          'university_name' => 'required|unique:universities',
+         'university_description' => 'required',
        ]);
        University::where('id','=',$request->university_id)->update([
          'university_name' => $request->university_name,
+         'university_description' => $request->university_description,
        ]);
        return back()->with('status','University Name Updated Successfully!');
      }
+     
     public function deleteuniversity($id)
     {
       University::find($id)->delete();

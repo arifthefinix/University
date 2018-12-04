@@ -9,13 +9,13 @@
 @endsection
 
 @section('content')
-<div class="content container-fluid">
-  <div class="row">
+  <div class="content container-fluid">
+    <div class="row">
       <div class="col-sm-12">
-          <h4 class="page-title">List of all Universities</h4>
+        <h4 class="page-title">List of all Universities</h4>
       </div>
-  </div>
-  <div class="row">
+    </div>
+    <div class="row">
       <div class="offset-sm-2 col-sm-8">
           <div class="card-box">
               <div class="card-block">

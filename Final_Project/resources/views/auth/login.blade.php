@@ -52,7 +52,7 @@
                                 <button class="btn btn-primary btn-block account-btn" type="submit">{{ __('Login') }}</button>
                             </div>
                             <div class="text-center">
-                                <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                                {{-- <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a> --}}
                             </div>
                             <div class="text-center">
                                 <a href="{{ route('register') }}"> New user?? Regester Here</a>

@@ -41,13 +41,8 @@
                       </div>
                       <div class="form-group row">
                           <label class="col-form-label col-md-2">E-mail</label>
-                          <div class="col-md-10">
-                              <input type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $old_info->email }}">
-                              @if ($errors->has('email'))
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $errors->first('email') }}</strong>
-                                  </span>
-                              @endif
+                          <div class="col-md-10 mt-1">
+                              {{ $old_info->email }}
                           </div>
                       </div>
                       <div class="form-group row">
@@ -111,7 +106,7 @@
                               <select class="form-control" name="group">
                                 <option>--Select--</option>
                                 @foreach ($groups as $group)
-                                  <option value="{{ $group->id }}">{{ $group->group_name }}</option>
+                                  <option value="{{ $group->id }}"{{ ($group->id == App\student_info::where('user_id', '=', Auth::user()->id)->firstorFail()->group_id)?'selected':'' }}>{{ $group->group_name }}</option>
                                 @endforeach
                               </select>
                           </div>

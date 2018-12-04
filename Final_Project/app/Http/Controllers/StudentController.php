@@ -10,6 +10,9 @@ use App\University;
 use App\Unit;
 use App\Subject;
 use App\Group;
+use App\Question;
+use App\ExamSubject;
+use App\Answer;
 use Hash;
 use Session;
 use App\StudentNotification;
@@ -19,34 +22,37 @@ class StudentController extends Controller
 {
   public function __construct()
   {
-      //$this->middleware('auth');
+      $this->middleware('auth');
       $this->middleware('student');
-
   }
 
-  public function index (){
-      $notifications = StudentNotification::all();
+  public function index ()
+  {
+      $notifications = StudentNotification::orderBy('id','desc')->get();
       return view('back.student.dashboard',compact('notifications'));
   }
 
-  public function studentprofileview (){
+  public function studentprofileview ()
+  {
       return view('back.student.profileview');
   }
-  public function studentchangepassword (){
+
+  public function studentchangepassword ()
+  {
       return view('back.student.studentchangepassword');
   }
 
-  public function studentpasswordupdate (Request $request){
-
-    $request->validate([
-      'old_password' => 'required',
-      'new_password' => 'required|min:6',
-      'confirm_password' => 'required|same:new_password',
-    ]);
-    if(Hash::check($request->old_password,Auth::user()->password)){
-      User::find(Auth::user()->id)->update([
-        'password' => bcrypt($request->new_password),
+  public function studentpasswordupdate (Request $request)
+  {
+      $request->validate([
+        'old_password' => 'required',
+        'new_password' => 'required|min:6',
+        'confirm_password' => 'required|same:new_password',
       ]);
+      if(Hash::check($request->old_password,Auth::user()->password)){
+        User::find(Auth::user()->id)->update([
+          'password' => bcrypt($request->new_password),
+        ]);
 
       return back()->with('status','Password Change Successfully!');
     }
@@ -56,40 +62,54 @@ class StudentController extends Controller
   }
 
 
-  public function studentuniversities(){
+  public function studentuniversities()
+  {
     $universities = University::all();
     return view('back.student.university',compact('universities'));
   }
 
-  public function studentuniversityunit($university_id){
-    $name = University::findorFail($university_id);
-    $gpa = student_info::where('user_id','=', Auth::user()->id)->value('hsc_gpa');
+  public function studentuniversityunit($university_id)
+  {
+    $name     = University::findorFail($university_id);
+    $sscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('ssc_gpa');
+    $hscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('hsc_gpa');
+    $total    = $sscgpa+$hscgpa;
     $group_id = student_info::where('user_id','=', Auth::user()->id)->value('group_id');
-    $units = DB::table('units')
-     ->where([
-        ['university_id','=',$university_id],
-        ['gpa', '<=', $gpa],
-        ['group_id', '=', $group_id],
-     ])
-     ->orWhere([
-       ['university_id','=',$university_id],
-       ['gpa', '<=', $gpa],
-       ['group_id', '=', 4],
-     ])
-     ->get();
-     return view('back.student.units',compact('units','name'));
+    $units    = DB::table('units')
+                                  ->where([
+                                    ['university_id','=',$university_id],
+                                    ['required_ssc_gpa', '<=', $sscgpa],
+                                    ['required_hsc_gpa', '<=', $hscgpa],
+                                    ['required_total_gpa', '<=', $total],
+                                    ['group_id', '=', $group_id],
+                                  ])
+                                  ->orWhere([
+                                    ['university_id','=',$university_id],
+                                    ['required_ssc_gpa', '<=', $sscgpa],
+                                    ['required_hsc_gpa', '<=', $hscgpa],
+                                    ['required_total_gpa', '<=', $total],
+                                    ['group_id', '=', 4],
+                                  ])
+                                  ->get();
+      return view('back.student.units',compact('units','name'));
   }
 
   public function studentapplyunit(){
-    $gpa = student_info::where('user_id','=', Auth::user()->id)->value('hsc_gpa');
+    $sscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('ssc_gpa');
+    $hscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('hsc_gpa');
+    $total    = $sscgpa+$hscgpa;
     $group_id = student_info::where('user_id','=', Auth::user()->id)->value('group_id');
     $units = DB::table('units')
      ->where([
-        ['gpa', '<=', $gpa],
-        ['group_id', '=', $group_id],
+       ['required_ssc_gpa', '<=', $sscgpa],
+       ['required_hsc_gpa', '<=', $hscgpa],
+       ['required_total_gpa', '<=', $total],
+       ['group_id', '=', $group_id],
      ])
      ->orWhere([
-       ['gpa', '<=', $gpa],
+       ['required_ssc_gpa', '<=', $sscgpa],
+       ['required_hsc_gpa', '<=', $hscgpa],
+       ['required_total_gpa', '<=', $total],
        ['group_id', '=', 4],
      ])
      ->get();
@@ -103,15 +123,21 @@ class StudentController extends Controller
   }
 
   public function studentsubjectslist(){
-    $gpa = student_info::where('user_id','=', Auth::user()->id)->value('hsc_gpa');
+    $sscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('ssc_gpa');
+    $hscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('hsc_gpa');
+    $total    = $sscgpa+$hscgpa;
     $group_id = student_info::where('user_id','=', Auth::user()->id)->value('group_id');
     $units = DB::table('units')
      ->where([
-        ['gpa', '<=', $gpa],
+       ['required_ssc_gpa', '<=', $sscgpa],
+       ['required_hsc_gpa', '<=', $hscgpa],
+       ['required_total_gpa', '<=', $total],
         ['group_id', '=', $group_id],
      ])
      ->orWhere([
-       ['gpa', '<=', $gpa],
+       ['required_ssc_gpa', '<=', $sscgpa],
+       ['required_hsc_gpa', '<=', $hscgpa],
+       ['required_total_gpa', '<=', $total],
        ['group_id', '=', 4],
      ])
      ->get();
@@ -138,7 +164,6 @@ public function studentprofileupdate($user_id){
 public function studentprofileedit(Request $request){
   $request->validate([
     'name' => 'required|max:255',
-    'email' => 'required|email|unique:users',
     'phone' => 'required|max:16',
     'ssc_year' => 'required',
     'ssc_gpa' => 'required',
@@ -149,7 +174,6 @@ public function studentprofileedit(Request $request){
 
   User::where('id','=',Auth::user()->id)->update([
     'name'=> $request->name,
-    'email'=> $request->email,
   ]);
   student_info::where('user_id','=',Auth::user()->id)->update([
     'phone' =>  $request->phone,
@@ -158,17 +182,37 @@ public function studentprofileedit(Request $request){
     'hsc_year' => $request->hsc_year,
     'hsc_gpa' => $request->hsc_gpa,
     'group_id' => $request->group,
+    'address' => $request->address,
   ]);
   return back()->with('status','Profile Updated Successfully!');
 }
 
 
 
-  public function student_exam(){
-    return view('back.student.exam.step1');
+  public function student_exam()
+  {
+    $examsubjects = ExamSubject::all();
+    return view('back.student.exam.step1',compact('examsubjects'));
   }
-  public function student_exam_question(){
-    return view('back.student.exam.step2');
+  public function student_exam_question($subject)
+  {
+    $subname = ExamSubject::findorFail($subject);
+    $questions = Question::where('exam_subject_id','=',$subject)->inRandomOrder()->limit(25)->get();
+    return view('back.student.exam.step2',compact('questions','subname'));
+  }
+
+  public function student_exam_answer_submit(Request $request){
+    $i=0;
+    $correct = 0;
+     foreach ($request->question_ids as $key => $question_id) {
+       $options = Answer::where('question_id','=',$question_id)->first();
+       if ($options->correct_ans == $request->answers[$i]) {
+         $correct++;
+       }
+       $i++;
+     }
+     return view('back.student.exam.result',compact('correct','i'));
+
   }
 
 }

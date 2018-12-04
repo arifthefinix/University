@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\StudentNotification;
 use Illuminate\Http\Request;
+use DB;
 
 class StudentNotificationController extends Controller
 {
@@ -15,12 +16,12 @@ class StudentNotificationController extends Controller
 
      public function __construct()
      {
-         // $this->middleware('auth');
+           $this->middleware('auth');
            $this->middleware('admin');
      }
     public function index()
     {
-      $notifications = StudentNotification::all();
+      $notifications = StudentNotification::orderBy('id','desc')->get();
       return view('back.admin.notification.view', compact('notifications'));
     }
 
@@ -58,6 +59,13 @@ class StudentNotificationController extends Controller
      * @param  \App\StudentNotification  $studentNotification
      * @return \Illuminate\Http\Response
      */
+
+     public function notificationdelete($id)
+     {
+        StudentNotification::find($id)->delete();
+        return back()->with('status','Notification Deleteed Successfully!');
+     }
+
     public function show(StudentNotification $studentNotification)
     {
         //
