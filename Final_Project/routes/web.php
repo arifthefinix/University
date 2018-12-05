@@ -88,7 +88,7 @@ Route::get('student/profile/update/{user_id}','StudentController@studentprofileu
 Route::post('student/profile/update','StudentController@studentprofileedit')->name('studentprofileedit');
 
 
-Route::get('uni/','frontController@university');
+Route::get('uni/{uni_name}','frontController@university');
 
 //Routes for Examination
 

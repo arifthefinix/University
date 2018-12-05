@@ -27,29 +27,25 @@
       					<li class="nav-item dropdown">
         					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Universities</a>
         					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          						<a class="dropdown-item" href="{{ url('uni') }}">Dhaka University</a>
-          						<a class="dropdown-item" href="#">Jahangirnogor University</a>
-          						<a class="dropdown-item" href="#">Rajshahi University</a>
-          						<a class="dropdown-item" href="#">Khulna University</a>
-          						<a class="dropdown-item" href="#">Barisal University</a>
-          						<a class="dropdown-item" href="#">Chittagong University</a>
-          						<div class="dropdown-divider"></div>
+										@php
+											$univers = App\University::all();
+										@endphp
+										@foreach ($univers as $univer)
+											<a class="dropdown-item" href="{{ url('uni') }}/{{ $univer->university_name }}">{{ $univer->university_name }}</a>
+										@endforeach
+
+
         					</div>
       					</li>
                 <li class="nav-item">
         					<a class="nav-link" href="{{ url('jobcicular') }}">Job Circulars</a>
       					</li>
-                <li class="nav-item">
-        					<a class="nav-link" href="#">About Us</a>
-      					</li>
+
                 <li class="nav-item">
         					<a class="nav-link" href="{{ route('login')}}">Login</a>
       					</li>
     				</ul>
-    				<form class="form-inline my-2 my-lg-0">
-    					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    				</form>
+
   				</div>
 				</nav>
     	</div>

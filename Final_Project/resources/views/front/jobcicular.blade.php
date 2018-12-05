@@ -10,31 +10,18 @@
           <div class="col-md-12 text-center">
             <h2 class="bg-primary text-white p-3">Job Circulars</h2>
           </div>
-          <div class="col-md-12 pt-2">
-            <h5 class="p-2">Job Circular of Bangladesh Railway</h5>
-            <a href="#" target="_blank" class="btn-sm btn-primary">View Circular</a>
-          </div>
-          <div class="col-md-12 pt-2">
-            <h5 class="p-2">Job Circular of Petrobangla</h5>
-            <a href="#" target="_blank" class="btn-sm btn-primary">View Circular</a>
-          </div>
-          <div class="col-md-12 pt-2">
-            <h5 class="p-2">Job Circular of Govt Bank</h5>
-            <a href="#" target="_blank" class="btn-sm btn-primary">View Circular</a>
-          </div>
-          <div class="col-md-12 pt-2">
-            <h5 class="p-2">Job Circular of Adamjee Cantonmnet College</h5>
-            <a href="#" target="_blank" class="btn-sm btn-primary">View Circular</a>
-          </div>
-          <div class="col-md-12 pt-2">
-            <h5 class="p-2">Job Circular of BTV</h5>
-            <a href="#" target="_blank" class="btn-sm btn-primary">View Circular</a>
-          </div>
+          @foreach ($circulars as $circular)
+            <div class="col-md-12 pt-2">
+              <h5 class="p-2">{{$circular->details}}</h5>
+              <a href="{{ asset('storage') }}/{{$circular->circular  }}" target="_blank" class="btn-sm btn-primary">View Circular</a>
+            </div>
+          @endforeach
+
         </div>
       </div>
 
       <section class="footer bg-info text-center text-white p-2">
-        <h3>All right reserved &copy;{{ date('Y') }}</h3>
+        <h6>All right reserved &copy;{{ date('Y') }}</h6>
       </section>
 
   @endsection
