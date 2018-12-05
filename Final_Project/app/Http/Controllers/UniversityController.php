@@ -14,10 +14,10 @@ class UniversityController extends Controller
      * @return \Illuminate\Http\Response
      */
      public function __construct()
-     {
+      {
           $this->middleware('auth');
           $this->middleware('admin');
-     }
+      }
 
     public function index()
     {
@@ -80,7 +80,7 @@ class UniversityController extends Controller
        ]);
        return back()->with('status','University Name Updated Successfully!');
      }
-     
+
     public function deleteuniversity($id)
     {
       University::find($id)->delete();

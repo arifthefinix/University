@@ -26,20 +26,20 @@
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">Logout</a>
     					</div>
-                </li>
-            </ul>
-            <div class="dropdown mobile-user-menu pull-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{route('studentprofileview')}}">My Profile</a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+            </li>
+          </ul>
+          <div class="dropdown mobile-user-menu pull-right">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+              <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="{{route('studentprofileview')}}">My Profile</a>
+                  <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
-                      </a>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          @csrf
-                      </form>
-                </div>
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
             </div>
         </div>
+    </div>

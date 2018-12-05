@@ -19,11 +19,12 @@ class StudentNotificationController extends Controller
            $this->middleware('auth');
            $this->middleware('admin');
      }
-    public function index()
-    {
-      $notifications = StudentNotification::orderBy('id','desc')->get();
-      return view('back.admin.notification.view', compact('notifications'));
-    }
+
+     public function index()
+     {
+       $notifications = StudentNotification::orderBy('id','desc')->get();
+       return view('back.admin.notification.view', compact('notifications'));
+     }
 
     /**
      * Show the form for creating a new resource.

@@ -108,11 +108,13 @@ class UnitController extends Controller
        ]);
        return back()->with('status','Unit Updated Successfully!');
      }
-    public function deleteunit($id)
-    {
-      Unit::find($id)->delete();
-      return back()->with('status','Unit Delation Successfully!');
-    }
+
+     public function deleteunit($id)
+     {
+       Unit::find($id)->delete();
+       return back()->with('status','Unit Delation Successfully!');
+     }
+
     public function show($id)
     {
         //

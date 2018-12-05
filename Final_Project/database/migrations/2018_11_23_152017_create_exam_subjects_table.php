@@ -19,7 +19,6 @@ class CreateExamSubjectsTable extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

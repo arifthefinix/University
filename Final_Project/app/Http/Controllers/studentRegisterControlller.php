@@ -12,8 +12,8 @@ use App\AdminNotification;
 
 class studentRegisterControlller extends Controller
 {
-    public function register(Request $request ){
-
+    public function register(Request $request )
+    {
       $request->validate([
         'name' => 'required|max:255',
         'email' => 'required|email|unique:users',
@@ -54,7 +54,6 @@ class studentRegisterControlller extends Controller
         'user_id' => $userid,
         'created_at' => Carbon::now(),
       ]);
-
       return redirect()->route('login');
     }
 }

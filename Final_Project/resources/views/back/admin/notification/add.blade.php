@@ -14,7 +14,6 @@
       <div class="col-sm-12">
           <h4 class="page-title">Add New Notification for students</h4>
       </div>
-
   </div>
   <div class="row">
       <div class="offset-md-2 col-md-6">

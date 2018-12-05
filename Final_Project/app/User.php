@@ -15,9 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password','user_image'
-    ];
+    protected $fillable = ['name', 'email', 'password','user_image'];
 
     public function isAdmin(){
       return $this->admin_role;

@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('/back_end') }}/assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('/back_end') }}/assets/css/style.css">
 </head>
-
 <body>
     <div class="main-wrapper">
         <div class="account-page">

@@ -10,12 +10,10 @@ use App\Unit;
 
 class SubjectController extends Controller
 {
-
   public function __construct()
   {
-      //$this->middleware('auth');
+      $this->middleware('auth');
       $this->middleware('admin');
-
   }
     /**
      * Display a listing of the resource.
@@ -67,15 +65,17 @@ class SubjectController extends Controller
        return back()->with('status','New Subject Added Successfully!');
     }
 
-
-    public function editsubject($subject_id){
+    public function editsubject($subject_id)
+    {
       $old_info = Subject::findorFail($subject_id);
       $universities = University::all();
       $units = Unit::all();
       $groups = Group::all();
       return view('back.admin.subject.edit',compact('old_info','universities','groups','units'));
     }
-    public function updatesubject(Request $request){
+
+    public function updatesubject(Request $request)
+    {
       $request->validate([
         'subject_name' => 'required',
         'university_id' => 'required|integer',
@@ -92,8 +92,9 @@ class SubjectController extends Controller
       ]);
       return back()->with('status','Subject Updated Successfully!');
     }
-   public function deletesubject($id)
-   {
+
+    public function deletesubject($id)
+    {
      Subject::find($id)->delete();
      return back()->with('status','Subject Delation Successfully!');
    }

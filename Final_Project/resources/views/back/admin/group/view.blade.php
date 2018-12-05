@@ -27,11 +27,11 @@
               @endif
                 <table class="datatable table table-stripped">
                   <thead>
-                      <tr>
-                          <th>No.</th>
-                          <th>Name</th>
-                          <th>Action</th>
-                      </tr>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
                   </thead>
                   <tbody>
                     @php

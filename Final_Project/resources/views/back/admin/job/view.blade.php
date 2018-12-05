@@ -4,11 +4,9 @@
   @include('back.inc.header')
 @endsection
 
-
 @section('sidebar')
   @include('back.inc.sidebar')
 @endsection
-
 
 @section('content')
 <div class="content container-fluid">

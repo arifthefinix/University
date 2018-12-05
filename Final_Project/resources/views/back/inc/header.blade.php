@@ -44,7 +44,6 @@
                         </div>
                     </div>
                 </li>
-
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span class="user-img">

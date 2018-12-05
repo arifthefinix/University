@@ -51,11 +51,11 @@
               <h4 class="card-title">List of All Subjects</h4>
               <table class="datatable table table-stripped table-responsive text-center">
                   <thead>
-                      <tr>
-                          <th>No.</th>
-                          <th> Subject Name</th>
-                          <th>Action</th>
-                      </tr>
+                    <tr>
+                        <th>No.</th>
+                        <th> Subject Name</th>
+                        <th>Action</th>
+                    </tr>
                   </thead>
                   <tbody>
                     @php

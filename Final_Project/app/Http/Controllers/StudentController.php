@@ -49,14 +49,16 @@ class StudentController extends Controller
         'new_password' => 'required|min:6',
         'confirm_password' => 'required|same:new_password',
       ]);
-      if(Hash::check($request->old_password,Auth::user()->password)){
+      if(Hash::check($request->old_password,Auth::user()->password))
+      {
         User::find(Auth::user()->id)->update([
           'password' => bcrypt($request->new_password),
         ]);
 
       return back()->with('status','Password Change Successfully!');
     }
-    else{
+    else
+    {
       return back()->withErrors('Old Password Do not match');
     }
   }
@@ -94,7 +96,8 @@ class StudentController extends Controller
       return view('back.student.units',compact('units','name'));
   }
 
-  public function studentapplyunit(){
+  public function studentapplyunit()
+  {
     $sscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('ssc_gpa');
     $hscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('hsc_gpa');
     $total    = $sscgpa+$hscgpa;
@@ -116,13 +119,15 @@ class StudentController extends Controller
       return view('back.student.applyunit',compact('units'));
   }
 
-  public function studentunitsubjects($unit_id){
+  public function studentunitsubjects($unit_id)
+  {
      $name = Unit::findorFail($unit_id);
      $subjects = Subject::where('unit_id','=',$unit_id)->get();
      return view('back.student.subjects',compact('name','subjects'));
   }
 
-  public function studentsubjectslist(){
+  public function studentsubjectslist()
+  {
     $sscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('ssc_gpa');
     $hscgpa   = student_info::where('user_id','=', Auth::user()->id)->value('hsc_gpa');
     $total    = $sscgpa+$hscgpa;
@@ -144,75 +149,77 @@ class StudentController extends Controller
     return view('back.student.allsubjects',compact('units'));
   }
 
-  public function studentimageupdate(Request $request){
-    if($request->hasFile('user_image')){
+  public function studentimageupdate(Request $request)
+  {
+    if($request->hasFile('user_image'))
+    {
       $path = $request->file('user_image')->store('user_images');
       User::find(Auth::user()->id)->update([
         'user_image' => $path
       ]);
     return back()->with('status','Profile Picture Change Successfully!');
+    }
   }
-}
 
-public function studentprofileupdate($user_id){
-  $old_info = User::findorFail($user_id);
-  $old_student_info = student_info::where('user_id','=',$user_id)->get();
-  $groups = Group::all();
-  return view('back.student.profileupdate',compact('old_info','$old_student_info','groups'));
-}
-
-public function studentprofileedit(Request $request){
-  $request->validate([
-    'name' => 'required|max:255',
-    'phone' => 'required|max:16',
-    'ssc_year' => 'required',
-    'ssc_gpa' => 'required',
-    'hsc_year' => 'required',
-    'hsc_gpa' => 'required',
-    'group' => 'required',
-  ]);
-
-  User::where('id','=',Auth::user()->id)->update([
-    'name'=> $request->name,
-  ]);
-  student_info::where('user_id','=',Auth::user()->id)->update([
-    'phone' =>  $request->phone,
-    'ssc_year' => $request->ssc_year,
-    'ssc_gpa' => $request->ssc_gpa,
-    'hsc_year' => $request->hsc_year,
-    'hsc_gpa' => $request->hsc_gpa,
-    'group_id' => $request->group,
-    'address' => $request->address,
-  ]);
-  return back()->with('status','Profile Updated Successfully!');
-}
-
-
-
-  public function student_exam()
+  public function studentprofileupdate($user_id)
   {
-    $examsubjects = ExamSubject::all();
-    return view('back.student.exam.step1',compact('examsubjects'));
-  }
-  public function student_exam_question($subject)
-  {
-    $subname = ExamSubject::findorFail($subject);
-    $questions = Question::where('exam_subject_id','=',$subject)->inRandomOrder()->limit(25)->get();
-    return view('back.student.exam.step2',compact('questions','subname'));
-  }
+      $old_info = User::findorFail($user_id);
+      $old_student_info = student_info::where('user_id','=',$user_id)->get();
+      $groups = Group::all();
+      return view('back.student.profileupdate',compact('old_info','$old_student_info','groups'));
+    }
 
-  public function student_exam_answer_submit(Request $request){
-    $i=0;
-    $correct = 0;
-     foreach ($request->question_ids as $key => $question_id) {
-       $options = Answer::where('question_id','=',$question_id)->first();
-       if ($options->correct_ans == $request->answers[$i]) {
-         $correct++;
+    public function studentprofileedit(Request $request)
+    {
+        $request->validate([
+          'name' => 'required|max:255',
+          'phone' => 'required|max:16',
+          'ssc_year' => 'required',
+          'ssc_gpa' => 'required',
+          'hsc_year' => 'required',
+          'hsc_gpa' => 'required',
+          'group' => 'required',
+      ]);
+
+      User::where('id','=',Auth::user()->id)->update([
+        'name'=> $request->name,
+      ]);
+      student_info::where('user_id','=',Auth::user()->id)->update([
+        'phone' =>  $request->phone,
+        'ssc_year' => $request->ssc_year,
+        'ssc_gpa' => $request->ssc_gpa,
+        'hsc_year' => $request->hsc_year,
+        'hsc_gpa' => $request->hsc_gpa,
+        'group_id' => $request->group,
+        'address' => $request->address,
+      ]);
+      return back()->with('status','Profile Updated Successfully!');
+    }
+
+    public function student_exam()
+    {
+        $examsubjects = ExamSubject::all();
+        return view('back.student.exam.step1',compact('examsubjects'));
+    }
+
+    public function student_exam_question($subject)
+    {
+        $subname = ExamSubject::findorFail($subject);
+        $questions = Question::where('exam_subject_id','=',$subject)->inRandomOrder()->limit(25)->get();
+        return view('back.student.exam.step2',compact('questions','subname'));
+    }
+
+    public function student_exam_answer_submit(Request $request)
+    {
+      $i=0;
+      $correct = 0;
+       foreach ($request->question_ids as $key => $question_id) {
+         $options = Answer::where('question_id','=',$question_id)->first();
+         if ($options->correct_ans == $request->answers[$i]) {
+           $correct++;
+         }
+         $i++;
        }
-       $i++;
-     }
-     return view('back.student.exam.result',compact('correct','i'));
-
+       return view('back.student.exam.result',compact('correct','i'));
   }
-
 }

@@ -50,7 +50,7 @@
                           </div>
                       </div>
                       <div class="text-center m-auto">
-                        <button type="submit" class="btn btn-primary">Update Info</button>
+                          <button type="submit" class="btn btn-primary">Update Info</button>
                       </div>
                     </form>
                 </div>

@@ -1,17 +1,14 @@
 @extends('layouts.master')
 
 @section('header')
-  @include('back.student.inc.header')
+    @include('back.student.inc.header')
 @endsection
-
 
 @section('sidebar')
-  @include('back.student.inc.sidebar')
+    @include('back.student.inc.sidebar')
 @endsection
 
-
 @section('content')
-
     <div class="content container-fluid">
         <div class="row">
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
@@ -50,8 +47,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
         <div class="row">
             <div class="col-md-8">
@@ -82,11 +77,8 @@
                         </tbody>
                       </table>
                     </div>
-                    
                 </div>
             </div>
         </div>
-
     </div>
-
 @endsection

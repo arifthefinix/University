@@ -17,44 +17,44 @@
     </div>
     <div class="row">
       <div class="offset-sm-1 col-sm-9">
-          <div class="card-box">
-              <div class="card-block">
-                  @if(session('status'))
-                    <div class="alert alert-danger">
-                      {{session('status')}}
-                    </div>
-                  @endif
-                  <h6 class="card-title text-bold">Students</h6>
-                  <table class="datatable table table-stripped table-responsive text-center">
-                      <thead>
-                          <tr>
-                              <th>No.</th>
-                              <th>Name</th>
-                              <th>Email</th>
-                              <th>Created at</th>
-                              <th>Action</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        @php
-                          $i=1;
-                        @endphp
-                          @foreach ($students as $student)
-                            <tr>
-                                <td>{{  $i++ }}</td>
-                                <td>{{ App\User::find($student->user_id)->name }}</td>
-                                <td>{{ App\User::find($student->user_id)->email }}</td>
-                                <td>{{ $student->created_at }}</td>
-                                <td>
-                                  <a href="#exampleModalCenter{{ $student->id }}" data-toggle="modal" title="View Details" class="btn btn-primary"> <i class="fa fa-eye"></i></a>
-                                  <a href="{{ url('admin/student/delete') }}/{{ $student->user_id }}" title="Delete" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                          @endforeach
-                      </tbody>
-                  </table>
-              </div>
+        <div class="card-box">
+          <div class="card-block">
+            @if(session('status'))
+            <div class="alert alert-danger">
+              {{session('status')}}
+            </div>
+            @endif
+            <h6 class="card-title text-bold">Students</h6>
+            <table class="datatable table table-stripped table-responsive text-center">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Created at</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              @php
+                $i=1;
+              @endphp
+                @foreach ($students as $student)
+                  <tr>
+                      <td>{{  $i++ }}</td>
+                      <td>{{ App\User::find($student->user_id)->name }}</td>
+                      <td>{{ App\User::find($student->user_id)->email }}</td>
+                      <td>{{ $student->created_at }}</td>
+                      <td>
+                        <a href="#exampleModalCenter{{ $student->id }}" data-toggle="modal" title="View Details" class="btn btn-primary"> <i class="fa fa-eye"></i></a>
+                        <a href="{{ url('admin/student/delete') }}/{{ $student->user_id }}" title="Delete" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
+                      </td>
+                  </tr>
+                @endforeach
+                </tbody>
+              </table>
           </div>
+      </div>
           @foreach ($students as $student)
             <div class="modal fade" id="exampleModalCenter{{ $student->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

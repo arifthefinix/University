@@ -55,8 +55,8 @@
                             <div class="col-md-7">
                                 <ul class="personal-info">
                                     <li>
-                                        <span class="title">Email:</span>
-                                        <span class="text"><a href="#">{{Auth::user()->email}}</a></span>
+                                      <span class="title">Email:</span>
+                                      <span class="text"><a href="#">{{Auth::user()->email}}</a></span>
                                     </li>
                                 </ul>
                             </div>

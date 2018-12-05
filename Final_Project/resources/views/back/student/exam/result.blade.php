@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('header')
-  @include('back.student.inc.header')
+    @include('back.student.inc.header')
 @endsection
 
 @section('sidebar')
-  @include('back.student.inc.sidebar')
+    @include('back.student.inc.sidebar')
 @endsection
 
 @section('content')
@@ -14,7 +14,6 @@
       <div class="col-sm-12">
           <h4 class="page-title">Results</h4>
       </div>
-
   </div>
   <div class="row">
       <div class="offset-md-2 col-md-8">

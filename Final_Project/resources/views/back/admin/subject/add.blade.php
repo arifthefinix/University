@@ -15,7 +15,7 @@
           <h4 class="page-title">Add New Subject</h4>
       </div>
   </div>
-  <div class="row">
+    <div class="row">
       <div class="offset-md-2 col-md-6">
           <div class="card-box">
             @if(session('status'))

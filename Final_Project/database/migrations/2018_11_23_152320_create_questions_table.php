@@ -20,7 +20,6 @@ class CreateQuestionsTable extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

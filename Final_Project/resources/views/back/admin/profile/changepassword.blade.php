@@ -19,7 +19,6 @@
                 {{session('status')}}
               </div>
             @endif
-            
             <form method="post" action="{{route('changepasswordupdate')}}">
               @csrf
                 <div class="row">

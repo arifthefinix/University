@@ -48,8 +48,8 @@
                     <button type="submit" class="btn btn-primary">Add University</button>
                 </div>
             </form>
-        </div>
-    </div>
+              </div>
+          </div>
+      </div>
   </div>
-</div>
 @endsection

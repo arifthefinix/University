@@ -49,7 +49,6 @@
                                   <a href="{{ url('admin/notification/delete') }}/{{$notification->id}}" title="Delete" class="btn btn-danger"> <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
-
                           @endforeach
                       </tbody>
                   </table>

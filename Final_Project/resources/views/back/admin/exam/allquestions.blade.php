@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<div class="content container-fluid">
+  <div class="content container-fluid">
   <div class="row">
       <div class="col-sm-12">
           <h4 class="page-title">All Questions List</h4>

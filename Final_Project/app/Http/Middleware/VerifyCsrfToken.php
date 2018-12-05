@@ -11,6 +11,7 @@ class VerifyCsrfToken extends Middleware
      *
      * @var bool
      */
+     
     protected $addHttpCookie = true;
 
     /**

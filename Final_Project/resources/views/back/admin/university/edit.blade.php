@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-  @include('back.inc.header')
+    @include('back.inc.header')
 @endsection
 
 @section('sidebar')

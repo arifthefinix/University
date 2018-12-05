@@ -3,22 +3,18 @@
 	@section('content')
       <div class="container-fluid p-0">
     				<div class="">
-      					<img class="d-block w-100" src="{{ asset('front_end/') }}/images/2.jpg" alt="Second slide">
+      					<img class="d-block w-100" src="{{ asset('front_end/') }}/images/2.png" alt="Second slide">
     				</div>
-
         </div>
-
         <div class="container bg-light pt-5 pb-5">
         	<div class="row">
 						<div class="col-md-4 text-center" id="notice_board">
 	            	<h2 class="bg-info text-center text-white pt-2 pb-2">Notice Board</h2>
 	                <marquee direction="up">
 	            		<ul class="text-danger">
-	                		  <li class="text-center">Admission Test Result Published of DU A Unit</li>
-	                		  <li class="text-center">Admission Test of Rajshahi University Will be held on 27th November</li>
-	                		  <li class="text-center">Admission Test Result Published of DU B Unit</li>
-	                		  <li class="text-center">Admission Test of Jahinggirnagor University Will be held on 10th December</li>
-	                		  <li class="text-center">Admission Test Result Published of DU A Unit</li>
+										@foreach ($studentnotifications as $studentnotification)
+											<li class="text-center">{{$studentnotification->notification_text}}</li>
+										@endforeach
 	                	</ul>
 	                </marquee>
 	            </div>
@@ -67,10 +63,10 @@
     							<label for="exampleInputEmail1">Username</label>
     								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
   							</div>
-                          	<div class="form-group">
-                            	<label for="exampleInputPassword1">Password</label>
-                            	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                          	</div>
+                	<div class="form-group">
+                  	<label for="exampleInputPassword1">Password</label>
+                  	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                	</div>
   							<div class="form-check">
     							<label class="form-check-label" for="exampleCheck1">New user??<a href="registration.html"> Register here</a></label>
   							</div>

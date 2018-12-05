@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'frontController@index')->name('front_index');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

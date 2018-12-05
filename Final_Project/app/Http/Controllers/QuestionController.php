@@ -44,16 +44,15 @@ class QuestionController extends Controller
            'exam_subject_id'=>$request->exam_subject_id,
            'question'=>$request->question,
          ]);
-
-             Answer::create([
-               'question_id' => $questionid,
-               'option_1' => $request->option_1,
-               'option_2' => $request->option_2,
-               'option_3' => $request->option_3,
-               'option_4' => $request->option_4,
-               'correct_ans' => $request->correct_ans,
-             ]);
-             return back()->with('status','New Question Add Successfully!');
+         Answer::create([
+           'question_id' => $questionid,
+           'option_1' => $request->option_1,
+           'option_2' => $request->option_2,
+           'option_3' => $request->option_3,
+           'option_4' => $request->option_4,
+           'correct_ans' => $request->correct_ans,
+         ]);
+         return back()->with('status','New Question Add Successfully!');
     }
 
     /**
